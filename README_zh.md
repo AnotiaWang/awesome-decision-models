@@ -189,7 +189,7 @@
 - [ask-jev-skill](https://github.com/shantanugoel/ask-jev-skill) - Hermes skill：Agent 需要有界决策时去问 Jev。
 - [hermes-jev-skills](https://github.com/kerpopule/hermes-jev-skills) - Hermes（也覆盖 Claude Code 和 Codex）的一组技能：模型路由、技能选择、检索、记忆和压缩交给 Jev。路由大约 0.4 秒，在 377 个技能里挑选大约 2.8 秒。交接摘要的实测召回不如原文，所以交接默认仍保留完整对话
 - [jev-system-architect](https://github.com/samtay32/jev-system-architect) - 专门找脆弱语义逻辑、改写成 Choice / Score / Noul 边界的 skill。
-- [augustus](https://github.com/24601/Augustus) - 非官方的智能体技能，用于发现、构建、评估和改进决策模型系统，提供组合规则、评估框架和有界的提示词／程序优化方法；默认以 TypeSafe Jev 为托管模型示例
+- [augustus](https://github.com/24601/Augustus) - 非官方的 augustus 和 augustus-train 智能体技能，面向特定应用的决策模型，涵盖原语、基础模型与方法选择、数据组装、拟合、导出与重新加载、有界改进及独立评估；默认以 TypeSafe Jev 为托管模型示例
 - [jev-axi](https://github.com/shiftynick/jev-axi) - CLI 加 Claude Code、Codex hook：命令执行前先用 Jev 给危险性打分，并筛查抓取到的文本是否含提示注入，常规命令在本地判定、不发送任何内容
 - [jev-engineering](https://github.com/eugeniughelbur/jev-engineering) - 编程 Agent 的决策层：先走确定性规则再发一次 Jev 请求，可作为 Claude Code hook、MCP 服务、本地回环服务，并带共享团队策略。附带支撑其数字的 300 次注入测试。
 - [Jevonian](https://github.com/xinyao27/jevonian) - 本地 OpenAI / Anthropic / Responses 兼容代理：`jevonian/auto` 用一次 Jev 请求同时决定走哪个模型和用多深的思考，状态来自会话（近期消息与工具结果、连续报错次数、上下文余量、配额、候选能力、切换模型的缓存代价）；候选筛选和全部阈值由确定性代码负责，指定具体模型或显式 `jevonian/<route>` 时完全不调用 Jev，每次决策都会记录实际服务的模型、理由、真实 token 用量和估算成本。
