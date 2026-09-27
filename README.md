@@ -74,6 +74,7 @@ Official first, then community clients. Community packages are not affiliated wi
 Open-source products and demos that put Jev in a real loop.
 
 - [MemSearch](https://github.com/zilliztech/memsearch) - Markdown memory for coding agents with an optional Jev Noul reranker and a published English/Chinese retrieval evaluation; community integration, not an official TypeSafe SDK
+- [Jev RAG](https://github.com/aifabrice/jev-rag) - Unofficial local-first knowledge search app using SQLite BM25 or agent-planned lexical retrieval, Jev `Noul` judgments for evidence reranking, and a published reproducible NFCorpus evaluation; no vector database is required by default
 - [Jev Ultrafast](https://github.com/browser-use/jev-ultrafast) - Browser agent from [Browser Use](https://github.com/browser-use). Jev picks an operation and a DOM element in one request; a small LLM writes text only for `TYPE_TEXT`. Zürich → London on Google Flights in ~7s. Library, local inspector, and measurements included.
 - [Jev Social](https://github.com/socai-io/jev-social) - Browser-grounded social research: Jev selects bounded Instagram, TikTok, and LinkedIn search/read operations, socai executes them in the user's Chrome, and reports cite the captured posts, comments, and video evidence; unofficial community project
 - [Jev Web Analyzer](https://github.com/replynodes/jev-web-analyzer) - Community project that analyzes a public SaaS landing page as clean Markdown and asks Jev ten bounded `Choice` questions about first-visit understanding, including the first change to make.

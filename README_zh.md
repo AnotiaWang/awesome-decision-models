@@ -74,6 +74,7 @@
 把 Jev 放进真实循环里的开源产品与 demo。
 
 - [MemSearch](https://github.com/zilliztech/memsearch) - 面向编程 Agent 的 Markdown 记忆系统，提供可选的 Jev Noul 重排器与公开的中英文检索评测；属于社区集成，并非 TypeSafe 官方 SDK
+- [Jev RAG](https://github.com/aifabrice/jev-rag) - 非官方本地优先知识检索应用：使用 SQLite BM25 或 Agent 规划的关键词检索召回候选，以 Jev `Noul` 判断重排证据，并公开可复现的 NFCorpus 评测；默认不需要向量数据库
 - [Jev Ultrafast](https://github.com/browser-use/jev-ultrafast) - [Browser Use](https://github.com/browser-use) 的浏览器 Agent。一次请求里由 Jev 选出操作和 DOM 元素；只有 `TYPE_TEXT` 才让小模型写字。Google Flights 苏黎世 → 伦敦约 7 秒。含库、本地 inspector 与测时。
 - [Jev Social](https://github.com/socai-io/jev-social) - 浏览器实证社媒调研：Jev 选择受限的 Instagram、TikTok 与 LinkedIn 搜索/读取操作，socai 在用户 Chrome 中执行，报告仅引用捕获的帖子、评论与视频证据；非官方社区项目
 - [Jev Web Analyzer](https://github.com/replynodes/jev-web-analyzer) - 社区项目：把公开 SaaS 落地页提取为干净 Markdown，再让 Jev 提出十个有界的 `Choice` 问题，判断首次访问者能理解什么，包括最先要改的地方。
