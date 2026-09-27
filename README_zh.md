@@ -120,6 +120,7 @@
 - [jev-askable-arm](https://github.com/TarunTomar122/jev-askable-arm) - 仿真 Franka 上用英文目标做 zero-shot；Jev 把硬编码原语串起来。
 - [jev-codex-router](https://github.com/0xNatoshi/jev-codex-router) - Codex 每轮路由：Jev 选模型、思考深度和速度模式。
 - [Codex Jev Router](https://github.com/suenot/codex-jev-router) - Codex 子代理路由：Jev 用 Choice 和 Noul 选择模型与推理档位，代码检查置信度，不确定时回退到 Sol。
+- [Jev Auto Router](https://github.com/miniLV/Jev-Auto-Router) - 非官方模型路由原型：用 Jev 为每次调用选择模型与推理档位，并通过本地 Responses 代理转发、独立验收任务
 - [jev-router](https://github.com/gargpratyush/jev-router) - Claude Code 与 Codex 的每轮路由：简单活走快档，难活走强档。`npm i -g jev-router`。
 - [jev-secret-detection](https://github.com/teyhouse/jev-secret-detection) - 用 Jev 扫 diff 里的密钥，结果可复现。
 - [commit-miner](https://github.com/devanshbatham/commit-miner) - 用 Jev 给 commit diff 分类的 Rust CLI：修 bug、安全/CWE、变更类型。可出 HTML/CSV 报告。
