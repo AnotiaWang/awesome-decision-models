@@ -218,6 +218,7 @@
 - [jevmlx](https://github.com/bnsd55/jevmlx) - 给任意 MLX 模型做 Jev 风格并行约束决策：一次前向得到带概率的、按 schema 合法的 JSON
 - [JEVfire](https://github.com/kikoncuo/jevfire) - CUDA LLM 上的 Jev 风格并行决策（vLLM），带浏览器马里奥 demo（本地约 71 ms/步）
 - [decider](https://github.com/Mapika/decider) - 基于 Qwen3.5-2B 的微调：一次前向就给出类型化决策和校准概率。非官方，不是 TypeSafe 的架构。
+- [jev-style](https://github.com/lawrence3699/jev-style) - 非官方 0.8B 决策模型（Qwen3.5 微调），`pip install "jev-style[torch]"`（Apple 芯片用 `[mlx]`）即可在本地运行（PyTorch、MLX，或配合单独编译的打分程序用 llama.cpp），提供兼容 `/v1/systemone` 的服务：一次前向回答 Choice、Score、Noul，并附带 MCP 服务和 Claude Code 守门钩子。非官方，不是 TypeSafe 的模型。
 - [LitJev](https://github.com/zhengxuyu/litjev) - Jev 的复现：把任意 Qwen 模型变成快速决策模型，提供与 Jev 相同的 `/v1/systemone` schema（Choice、Score、Noul），不训练、不生成回答文本。非官方，不是 TypeSafe 的模型。
 - [PlayJev](https://github.com/OmniJev/PlayJev) - Qwen3.5-0.8B-Base 微调后从 448 px 画面玩十款浏览器小游戏：每步一次前向，概率直接从选项字母上读出，不生成任何文本。权重和十款游戏的浏览器 demo 都已公开。非官方，不是 TypeSafe 的模型。
 - [typesafe-ai-benchmark](https://github.com/iammrduncan/typesafe-ai-benchmark) - 同一套 System One 问题，对比 Jev 与 Cerebras 上的 Qwen 3.8 27B。视频：[Shannon](https://x.com/iamMrDuncan/status/2100467548298899918)。
