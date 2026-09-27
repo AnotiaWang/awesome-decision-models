@@ -203,6 +203,7 @@
 - [jgrep (kyu1204)](https://github.com/kyu1204/jgrep) - 面向代码、git diff 和 CSV 行的语义 grep：每个 5-60 行代码块一个 Noul，每次 Jev 请求打包 16 个块，输出 grep 风格的 file:line 和退出码，可在 CI 中用英文句子做规则检查
 - [jevgrep (allebee)](https://github.com/allebee/jevgrep) - 面向日志的流式语义 grep：对每一行向 Jev 提出一个 Noul 问题（用自然语言描述条件），打印概率不低于阈值的行，也可接在 `tail -f` 后使用
 - [wellposed](https://github.com/suraj-phanindra/wellposed) - 面向 Jev 请求的离线 linter 与 agent skill：40 条结构检查完全不调用模型（缺少「以上都不是」选项、state 路径失效、criteria 形状错误），再用 Jev 自身检查结构无法判定的部分，并附带为两层分别打分的标注语料。
+- [jev-auto-approve](https://github.com/BasmaAbouzied0/jev-auto-approve) - Claude Code PreToolUse hook：每条 Bash 命令向 Jev 提一个 Noul，判断是否严格只读；p ≥ 0.95 自动批准，否则回退到正常的权限确认，从不拒绝。本地黑名单和注入过滤让高风险命令不会发给 Jev；公开校准中 8 条会改变状态的命令无一被批准
 
 ## 研究与开源模型
 
