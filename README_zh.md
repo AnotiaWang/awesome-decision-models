@@ -106,6 +106,7 @@
 - [jev-tree](https://github.com/reachjalil/jev-tree) - 在分类树上递归做 Choice，突破 Jev 单次最多 255 个选项的上限
 - [jev-shell-history](https://github.com/mrnugget/jev-shell-history) - Fish 风格的 zsh 自动补全：输入时由 Jev 给近期历史排序
 - [Supercov](https://github.com/supercorp-ai/supercov) - 面向编码 agent 的代码质量与测试覆盖率工具：Jev 给每个源文件打分，agent 就知道该先修哪里
+- [jev-lint](https://github.com/ckorhonen/jev-lint) - 非官方 Claude Code 和 Codex 代码检查钩子：Jev 通过 Noul 问题判断新增代码是否违反编码规则，本地阈值将返回的概率转为即时反馈
 - [Jev Review](https://github.com/devagrawal09/jev-review) - 分阶段代码审查工作流 + 本地 dashboard，由聚焦的 Jev 调用驱动。
 - [Foreman](https://github.com/thruwire/foreman) - 软件工厂循环：Codex 写实现，Jev 独立判断是否做完、测试够不够、要不要人来看。
 - [Jev Drone](https://github.com/RomanSlack/jev-drone) - MuJoCo 四旋翼：控制和安全留在代码里，Jev 做较慢的战术判断。
