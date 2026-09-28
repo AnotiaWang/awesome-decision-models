@@ -208,6 +208,7 @@ Tools that expose Jev to coding agents and MCP clients.
 - [jgrep (kyu1204)](https://github.com/kyu1204/jgrep) - Semantic grep for code, git diffs and CSV rows: one Noul per 5-60 line chunk, 16 chunks per Jev request, grep-style file:line output and exit codes for CI lint rules written in English
 - [jevgrep (allebee)](https://github.com/allebee/jevgrep) - Streaming grep by meaning for logs: asks Jev one Noul per line against a plain-English question and prints the lines at or above a threshold, including from `tail -f`
 - [wellposed](https://github.com/suraj-phanindra/wellposed) - Offline linter and agent skill for Jev requests: 40 structural checks with no model call (missing none-of-the-above options, broken state paths, wrong criteria shapes), plus Jev-on-Jev checks for what structure cannot decide, with labelled corpora that score both layers.
+- [jev-auto-approve](https://github.com/BasmaAbouzied0/jev-auto-approve) - Claude Code PreToolUse hook: one Jev Noul per Bash command on whether it is strictly read-only; auto-approves at p ≥ 0.95, otherwise falls back to the normal permission prompt and never denies. A local hard-no list and injection filter keep risky commands away from Jev; 0 of 8 state-changing commands approved in its published calibration
 
 ## Research & Open Models
 
