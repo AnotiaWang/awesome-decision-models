@@ -267,6 +267,7 @@ Community cookbooks.
 - [MrJev/awesome-jev](https://github.com/MrJev/awesome-jev) - Selective list behind a 10-star bar, with hands-on reviews at [mrjev.com](https://mrjev.com/best-jev-tools/) recording what each tool sends and where.
 - [typesafe-ai on PyPI](https://pypi.org/project/typesafe-ai/) - Community redirect shim. The real package is `typesafe-sdk`; this name was registered to block slopsquatting. Not affiliated with TypeSafe.
 - [laya.tools](https://laya.tools) - Unofficial directory of about 950 projects built on the open Laya model, from GitHub, npm, Hugging Face and X, browsable by platform and use case, with a Laya vs Jev comparison. Not affiliated with TypeSafe or ConvAI
+- [AgentPlugins JEV directory](https://agentplugins-2v1.pages.dev/jev-plugins/) - Cross-ecosystem JEV plugin & tool directory covering browser-use/jev-ultrafast, Laya, Kev and fast-jev-compaction, ranked by GitHub stars, with a practical [JEV tutorial](https://agentplugins-2v1.pages.dev/typesafe/) and a [Laya vs Jev vs Kev comparison](https://agentplugins-2v1.pages.dev/laya-vs-jev/). Not affiliated with TypeSafe.
 
 ## Contribute
 

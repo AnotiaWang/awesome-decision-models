@@ -267,6 +267,7 @@
 - [MrJev/awesome-jev](https://github.com/MrJev/awesome-jev) - 另一份更严的列表（10 星门槛），[mrjev.com](https://mrjev.com/best-jev-tools/) 上有动手评测，记录每个工具发了什么、发到哪。
 - [PyPI 上的 typesafe-ai](https://pypi.org/project/typesafe-ai/) - 社区注册的重定向包。真正该装的是 `typesafe-sdk`；此名用于挡住 slopsquatting。与 TypeSafe 无隶属关系。
 - [laya.tools](https://laya.tools) - 非官方目录：收录约 950 个基于开源 Laya 模型的项目，来自 GitHub、npm、Hugging Face 和 X，可按平台和用途浏览，并附 Laya 与 Jev 对比。与 TypeSafe 和 ConvAI 无隶属关系
+- [AgentPlugins JEV 目录](https://agentplugins-2v1.pages.dev/jev-plugins/) - 跨生态 JEV 插件与工具目录：收录 browser-use/jev-ultrafast、Laya、Kev、fast-jev-compaction 等，按 GitHub 星标排序，附[实用 JEV 教程](https://agentplugins-2v1.pages.dev/typesafe/)与 [Laya / Jev / Kev 对比](https://agentplugins-2v1.pages.dev/laya-vs-jev/)。与 TypeSafe 无隶属关系
 
 ## 贡献
 
