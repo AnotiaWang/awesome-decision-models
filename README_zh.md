@@ -248,6 +248,7 @@
 - [Jevals.com](https://jevals.com/) - 独立评测：托管 Jev 与六个 LLM 回答同样的 Noul、Choice、Score 问题，按人工标签打分（PubMedQA、Banking77、HelpSteer2），每次决策的日志公开
 - [stuntd](https://github.com/bladedevoff/stuntd) - 基于开放 Laya 模型的本地代理，实现 Jev System One API；记录来自 Jev 上游的 Choice、Score 和 Noul 答案，为每个问题训练一个决策头，并以校准过的置信度阈值提供服务，低于阈值时回退到上游
 - [jev-fanout-bench](https://github.com/blowxian/jev-fanout-bench) - 用 2976 次经 OpenRouter 的请求比较一次批量提问和拆开提问：每次请求大约有 261 个固定输入 token，费用与公布的 token 单价一致，答案差异和重复请求的噪声相当
+- [TetraJev](https://github.com/FeiLiuEM/tetrajev) - 可本地部署的决策层，处理跨领域的复杂决策：两个冻结的开源权重读取器对每条样本给出四次读数（选项字母，以及逐候选项的是/否），无拟合地融合，再按一致性路由并设有校准后的放行门；已在八个决策套件和 RAG 重排上评测，包括 DecisionBench 的 35 类真实任务。全程不训练。非官方，不是 TypeSafe 的模型。
 
 ## 文章
 
