@@ -247,6 +247,7 @@ Independent work inspired by Jev's interface. These are not TypeSafe models.
 - [Jevals.com](https://jevals.com/) - Independent benchmark of hosted Jev and six LLMs on the same Noul, Choice and Score questions, graded against human labels (PubMedQA, Banking77, HelpSteer2), with per-decision logs as open data
 - [stuntd](https://github.com/bladedevoff/stuntd) - Local proxy on the open Laya model that speaks the Jev System One API, records the app's Choice, Score and Noul answers from a Jev upstream, trains a per-question head, and serves it with a calibrated confidence threshold and fallback to the upstream
 - [jev-fanout-bench](https://github.com/blowxian/jev-fanout-bench) - Compares batched and separate Jev calls in 2,976 requests through OpenRouter, reporting approximately 261 fixed input tokens per request, charges matching the published token rate, and answer differences comparable to repeat-request noise.
+- [TetraJev](https://github.com/FeiLiuEM/tetrajev) - Locally-deployed decision layer for complex decision problems across domains: two frozen open-weight readers give four readings per item — letter and per-candidate yes/no — fused fit-free and routed by agreement with calibrated release gates; evaluated on eight decision suites and the RAG reranking pass, including DecisionBench's 35 real-world task categories. No training of any kind. Unofficial; not TypeSafe's model.
 
 ## Articles
 
