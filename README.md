@@ -155,7 +155,7 @@ Toys, live sites, and realtime agents.
 - [Hollow Creek](https://hollow-creek-sigma.vercel.app) - Village NPCs that *judge* you each tick (what to do, how they feel) instead of chatting.
 - [Jev mood demo](https://jev-demo.vercel.app) - Talk nicely or nastily over time; structured state tracks mood.
 - [Jev Room](https://jev-room.moe136231.chatgpt.site) - One sentence → six room settings. Jev chooses, the app renders.
-- [1 Million Emojis](https://chriswijnia.com/experiments/emoji) - A shared 1000 × 1000 emoji canvas, live for everyone; after each stroke Jev picks a square next to it and its emoji as one Choice ([source](https://github.com/cwdx/1-million-emojis))
+- [1 Million Emojis](https://chriswijnia.com/lab/emoji) - A shared 1000 × 1000 emoji canvas, live for everyone; after each stroke Jev picks a square next to it and its emoji as one Choice ([source](https://github.com/cwdx/1-million-emojis))
 - [TypeSafe Typewriter](https://typesafe-demo.val.run/) - Live Val Town demo: 16 typed judgments update as you type. Launch post: [Steve Krouse](https://x.com/stevekrouse/status/2100287368221659289).
 - [got-jev](https://github.com/phureewat29/got-jev) - Game of Thrones roleplay as Jon Snow. A story model writes the scene; Jev answers where he is, how much danger, and what should play under it.
 - [Little Airways](https://github.com/lbotinelly/jev-little-airways) - Toy archipelago ATC: Jev judges divert / emergency / who lands first from each plane's local state, ~150 ms.

@@ -155,7 +155,7 @@
 - [Hollow Creek](https://hollow-creek-sigma.vercel.app) - 村庄 NPC 每个 tick *评判*你（做什么、对你什么感觉），而不是聊天。
 - [Jev mood demo](https://jev-demo.vercel.app) - 长时间对它好或坏，结构化 state 跟踪心情。
 - [Jev Room](https://jev-room.moe136231.chatgpt.site) - 一句话 → 六个房间设定。Jev 选，应用渲染。
-- [1 Million Emojis](https://chriswijnia.com/experiments/emoji) - 一块人人实时共享的 1000 × 1000 emoji 画布；每一笔之后，Jev 用一次 Choice 选定旁边的一格及其 emoji（[源码](https://github.com/cwdx/1-million-emojis)）。
+- [1 Million Emojis](https://chriswijnia.com/lab/emoji) - 一块人人实时共享的 1000 × 1000 emoji 画布；每一笔之后，Jev 用一次 Choice 选定旁边的一格及其 emoji（[源码](https://github.com/cwdx/1-million-emojis)）。
 - [TypeSafe Typewriter](https://typesafe-demo.val.run/) - Val Town 在线 demo：打字时 16 条类型化判断实时更新。发布帖：[Steve Krouse](https://x.com/stevekrouse/status/2100287368221659289)。
 - [got-jev](https://github.com/phureewat29/got-jev) - 权力的游戏角色扮演：你是琼恩·雪诺。故事模型写下一场，Jev 回答他在哪、有多危险、该配什么音乐。
 - [Little Airways](https://github.com/lbotinelly/jev-little-airways) - 玩具群岛空管：每架飞机只看见自己附近，Jev 判断备降 / 紧急 / 谁先落地，约 150 ms。
