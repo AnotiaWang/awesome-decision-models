@@ -84,6 +84,7 @@
 - [Jev for Chrome](https://github.com/chy4pro/jev-for-chrome) - Jev Ultrafast 的非官方 Chrome 扩展（Manifest V3）移植：Jev 一次请求同时选出操作和 DOM 元素，只有打字时才调用小文本模型，直接跑在用户自己的标签页里（OpenRouter / TypeSafe / Cloudflare 三种渠道）；附 17 个任务的 headless Chromium 测试套件和完整轨迹（仓库 docs/ 目录，同一套任务多轮 13–14/17）。
 - [jev-ego](https://github.com/romaluev/jev-ego) - [ego lite](https://lite.ego.app/) 上的浏览器 Agent：一次 TypeSafe 请求选出操作和编号元素；面向 Agent 的 observe/act/suggest/step CLI
 - [jev-browser](https://github.com/Ying-Kai-Liao/jev-browser) - 非官方浏览器自动化：LLM 规划目标，Jev 在 Playwright 快照上决定每次点击/输入（约 300 ms/次）。提供库、CLI 与 MCP 服务（`npx -y -p jev-browser jev-browser-mcp`）。
+- [Sedum](https://github.com/sedum-dev/sedum) - 非官方的开源 Playwright 端到端 AI 测试工具：目标模式下由 Jev 选出每一步操作及其目标，纯英文步骤用 Jev Choice 找到对应元素，验证断言是两个 Noul（holds、contradicted），点击、等待、判定和退出码均由确定性代码完成
 - [typesafe-computer-use](https://github.com/awlevin/typesafe-computer-use) - macOS computer-use：OCR 屏幕，Jev 分类下一步动作再点击。约 $0.0002/步。
 - [Yappy](https://yappy.biz/jev/) - macOS 语音 Agent（闭源，附公开测量数据）。在其托管方案上，Jev 每一步从窗口的无障碍控件表中选择操作与目标控件；只有输入文本时才调用聊天模型，置信度下降时交回完整 Agent。作者报告：每次决策 275–690 ms，五次共 $0.003。
 - [Mobile Jev](https://github.com/droidrun/mobile-jev) - [Mobilerun](https://mobilerun.ai) 上的 Android Agent：每次点击由 Jev 决定。打开 Uber，旧金山机场 → 金门大桥，约 21 秒 / 9 步到支付页。含实时 studio、CLI 与 traces。不需要 ADB。
