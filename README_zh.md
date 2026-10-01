@@ -237,6 +237,7 @@
 - [OneJev](https://github.com/OmniJev/OneJev) - OmniJev 团队的开源多模态 System One 模型，四种尺寸（0.8B 到 27B）：对截图、照片、视频或文本提出 Choice、Score、Noul，一次前向为每个选项给出校准概率。权重在 Hugging Face。非官方，不是 TypeSafe 的模型。
 - [jevos](https://github.com/feder-cr/jev) - 非官方 1B 决策模型，面向纯 CPU 笔记本：把 MiniCPM5 裁剪到 17 层并接一个单 logit 输出头，GGUF q4_k_m 量化后 619 MB，跑在 llama.cpp 上不需要 GPU，短请求约 54 ms。只支持 Jev `/v1/systemone` 协议里的 Noul（是/否）问题，Choice 和 Score 会返回 422。非官方，不是 TypeSafe 的模型。
 - [WebJev](https://github.com/lexmount/WebJev) - 非官方的浏览器 agent 决策模型，接口与 Jev 兼容：基于 Qwen3.5-35B-A3B 微调，在 Jev Ultrafast 循环中选择下一步操作和目标元素，提供兼容 `/v1/systemone` 的服务。在 125 个由确定性判据评分的真实网站任务上，同一 agent 中完成率为 38.5%，Jev 1.13 为 16.7%。公开 Apache-2.0 权重、训练数据、训练方法和演示应用。不是 TypeSafe 的模型
+- [Vev](https://github.com/Xiaooolong/vev) - 支持视觉输入的 Jev 开源实现，基于 Qwen3.5 4B / 9B 微调。截图、照片可以直接放进 state，Choice、Score、Noul 结合文本与图像作答，概率直接从标签 token 上读出，不生成文本。提供兼容 `/v1/systemone` 的服务，代码与权重开源，权重仅限非商用。非官方，不是 TypeSafe 的模型。
 - [typesafe-ai-benchmark](https://github.com/iammrduncan/typesafe-ai-benchmark) - 同一套 System One 问题，对比 Jev 与 Cerebras 上的 Qwen 3.8 27B。视频：[Shannon](https://x.com/iamMrDuncan/status/2100467548298899918)。
 - [Jev Rerank Bench](https://github.com/anessbelbati/jev-rerank-bench) - 重排序对比：原始 provider 响应、打分代码、不确定区间、写明的局限。
 - [Jev Spam Eval](https://github.com/bitnovus/jev-spam-eval) - 探索性零样本垃圾邮件研究，对照训练过的 TF-IDF 基线，并写了事后调参的 caveat。
