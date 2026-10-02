@@ -2,7 +2,7 @@
 
 精选的决策模型（decision model，也称 System One 模型、类型化决策模型）资源，以及围绕它们的 API、运行时、工具、应用、评测与研究。
 
-**[English](README.md)** | **[简体中文](README_zh.md)**
+**[English](README.md)** | **[简体中文](README_zh.md)** · [网页版](https://anotiawang.github.io/awesome-decision-models/?lang=zh)
 
 决策模型读入一段状态（文本、JSON，部分模型也支持图片），再加上答案事先声明好的问题，为每个答案返回一个概率，而不是生成文本。问题有三种形态：Noul（某个陈述为真的概率）、Choice（从你给的选项里选一个）和 Score（在有序量表上的等级）。TypeSafe AI 在 2026 年 9 月用 [Jev](https://docs.typesafe.ai/introduction) 和它的 `/v1/systemone` API 开创了这一类别，下面许多模型和运行时都接受同样的请求格式。
 
