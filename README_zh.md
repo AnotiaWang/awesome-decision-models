@@ -32,6 +32,7 @@
   - [Playground](https://console.typesafe.ai/playground) · [控制台](https://console.typesafe.ai) · [GitHub](https://github.com/typesafe-ai) · [Workflow evals](https://evals.typesafe.ai) · [Cookbook](https://docs.typesafe.ai/llms.txt) · [模式](https://docs.typesafe.ai/patterns)
   - [Jev 1.13 jaggedness](https://docs.typesafe.ai/model-jaggedness/jev-1.13) - 已知失败模式
   - 社区：[Discord](https://discord.gg/typesafe)（builder demo 在 [Show and Tell](https://discord.com/channels/1483217544214085663/1483217545040232493)）· [X @typesafeai](https://x.com/typesafeai)
+- [meraGPT Decider 1](https://meragpt.com/docs) - 托管决策模型（`state-decider-1`，别名 `sd-1`），通过 `/v1/systemone` 回答 Noul、Choice 和 Score，可用 TypeSafe SDK 调用；请求上限为 4,096 token，Choice 最多十个标签
 - [Solar Decide](https://openrouter.ai/upstage/solar-decide) - Upstage 基于 Solar Mini 4 的决策模型，目前为 beta，512K 上下文，请求格式与 Jev 相同
 - [Span-01](https://www.respan.ai/blog/introducing-span-1) - Respan 面向 AI trace 的行为分类模型：对你用自然语言定义的每种行为（提示注入、幻觉、Agent 死循环等）判断为出现、未出现或无法观察。Span-01 及其 Lite 版已上架 [OpenRouter](https://openrouter.ai/respan/span-01)。
 - [d1](https://docs.liquid.ai/lfm/models/decision-models) - Liquid AI 的第一个决策模型，提供可用 TypeSafe SDK 调用的 `/v1/systemone` 端点，也上架了 [OpenRouter](https://openrouter.ai/liquid/d1)。未公开模型规模。
@@ -50,6 +51,9 @@
 - [Nimble](https://github.com/bespokelabsai/nimble) - Bespoke Labs 用对比式筛选的合成数据对 Qwen3.5-9B 做的 9B LoRA 微调，附公开的 13 个数据集评测套件。Ollama 中名为 `nimble`。
 - [Tev1](https://huggingface.co/togethercomputer/Tev1-4B-experimental) - Together AI 基于 Qwen3.5 的实验性监督微调模型（4B 和 0.8B），同时发布了[花 17 美元训练自己的决策模型](https://www.together.ai/blog/how-to-train-your-own-jev)的教程。Ollama 中名为 `tev1`。
 - [Laya](https://github.com/NandhaKishorM/laya) - Convai Innovations 的多语言非自回归决策模型：一次前向完成 Choice、Score 和 Noul，权重和 PyPI 包已公开，并按请求选择检查点
+- [GLiNER2.5-Decide](https://huggingface.co/fastino/GLiNER2.5-Decide) - Fastino 基于 DeBERTa-v3-large 的 Apache-2.0 决策分类模型：调用方定义任务和标签，通过 `gliner2` 在 CPU 或 GPU 上一次前向返回概率，面向业务分类、路由与有序评分
+- [Standard One](https://huggingface.co/StandardThinking/StandardOne-8B) - Standard Thinking 基于 Ministral 3 的 Apache-2.0 决策模型（3B、8B），保留 Pixtral 视觉编码器：输入文本或图片，通过 `/v1/systemone` 返回选项概率，附合并权重、适配器、GGUF 和服务端代码
+- [OpenJev](https://huggingface.co/openjev/openjev) - 独立开放权重决策模型，一次前向为调用方定义的选项打分，附校准与服务端代码；权重采用 CC BY-NC 4.0，仅限非商业用途，辅助与服务端代码采用 Apache-2.0。与曾名为 OpenJev 的 SemIf 是不同项目。
 
 ### 社区模型
 
@@ -87,10 +91,11 @@
 
 ## 运行时与平台
 
-在统一 API 后面托管决策模型的服务端与网关。
+运行决策模型的服务端、网关与原生运行时。
 
 - [Ollama](https://ollama.com/blog/ollama-now-supports-jev-style-decision-models) - 从 0.35 起在本地提供 `/v1/systemone`；模型库里首批决策模型是 `nimble` 和 `tev1`。
 - [Ollaya](https://github.com/ollaya-dev/ollaya) - 面向决策模型的 Ollama 式运行时：拉取并运行开源 encoder 与 decoder 模型（Laya、Von、Kev、Decider、Nimble、Winnow 等），沿用各作者的校准，对外提供 `/v1/systemone`；官方 TypeSafe Python SDK 无需修改即可连接。官网：[ollaya.dev](https://ollaya.dev)。
+- [Laya-MLX](https://github.com/mizorewww/laya-mlx) - 面向 Apple Silicon 的独立 Laya 原生 MLX 移植：本地完成 Choice、Score 和 Noul，无文本生成或云 API，沿用上游问题格式与校准，附公开的移植一致性检查和性能测量
 - [OpenRouter 决策模型](https://openrouter.ai/models?output_modalities=decisions) - OpenRouter alpha 版 Decisions API 上多家发布方的决策模型；chat completions SDK 无法调用该 API。使用指南以 Agent skill 形式提供：[openrouter-decisions](https://openrouter.ai/skills/openrouter-decisions)。
 - [Vercel AI Gateway](https://vercel.com/ai-gateway/models/jev) - 以 `typesafe-ai/jev` 托管 Jev
 - [stuntd](https://github.com/bladedevoff/stuntd) - 基于开放 Laya 模型的本地代理，实现 Jev System One API；记录来自 Jev 上游的 Choice、Score 和 Noul 答案，为每个问题训练一个决策头，并以校准过的置信度阈值提供服务，低于阈值时回退到上游
@@ -99,7 +104,7 @@
 
 调用 `/v1/systemone` API 的客户端，官方在前。大多数是为 TypeSafe 托管的 Jev 编写的；官方 TypeSafe SDK 也能连接 Ollaya、Liquid d1 等兼容服务。除非另行说明，社区包与任何厂商都无隶属关系。
 
-- [Python SDK](https://github.com/typesafe-ai/typesafe-sdk-python) - 官方客户端。`pip install typesafe-sdk`。文档：[Python SDK](https://docs.typesafe.ai/sdk/python)。
+- [Python SDK](https://github.com/typesafe-ai/typesafe-sdk-python) - 官方客户端。`pip install typesafe-sdk`。文档：[Python SDK](https://docs.typesafe.ai/sdk/python)。社区包 [typesafe-ai](https://pypi.org/project/typesafe-ai/) 是为防占名而注册的重定向包；请直接安装 `typesafe-sdk`。
 - [JavaScript / TypeScript SDK](https://github.com/typesafe-ai/typesafe-sdk-js) - 官方客户端。`npm install @typesafe-ai/sdk`。文档：[JavaScript SDK](https://docs.typesafe.ai/sdk/javascript)。
 - [System One adapter（Python）](https://github.com/typesafe-ai/system-one-adapter-python) - 官方提供的 `TypeSafeClient` 替身，后端走 LLM API，方便用同一套问题对比 Jev 与聊天模型。`pip install system-one-adapter`。
 - [Vercel AI SDK provider](https://ai-sdk.dev/providers/ai-sdk-providers/typesafe-ai) - `@ai-sdk/typesafe-ai` + `experimental_evaluate`。可用 `typeSafeAi.evaluationModel('jev-latest')`，或 Gateway id `typesafe-ai/jev`。
@@ -108,7 +113,7 @@
 - [Jev（Elixir OTP）](https://github.com/dannote/jev) - Hex 包 [`jev`](https://hex.pm/packages/jev)：把 Jev 当成对等 GenServer，答案以消息到达再 pattern match，测试可以不碰网络
 - [Ruby SDK](https://github.com/joshmn/typesafe-sdk) - 社区 Ruby 3.1+ 客户端：Noul / Choice / Score、重试、模型列表、线程安全连接池。没有异步客户端。
 - [RubyLLM TypeSafe](https://github.com/kieranklaassen/ruby_llm-typesafe) - RubyLLM 2 的 TypeSafe provider，带离线模型元数据和类型化响应。
-- [typesafe-ai-rails](https://github.com/GenieRobot/typesafe-ai-rails) - 基于官方 Python SDK 的 Rails 集成：配置、用量/成本遥测、可选置信度策略。
+- [typesafe-ai-rails](https://github.com/GenieRobot/typesafe-ai-rails) - 非官方 Rails 集成，基于社区 Ruby gem `typesafe-sdk`：配置、用量/成本遥测，以及可选的置信度策略
 - [Rust SDK (typesafe-ai-rs)](https://github.com/gilljon/typesafe-ai-rs) - 独立的异步 / 阻塞 System One 客户端。
 - [TypeSafe AI for Rust](https://github.com/Twister915/typesafe-ai) - 另一个 Rust 客户端：异步 + 阻塞传输、类型化响应、可观测重试。
 - [typesafe-rs](https://github.com/AbdelStark/typesafe-rs) - 偏延迟的 Rust 传输 SDK，目标对齐官方客户端行为。
@@ -124,6 +129,7 @@
 - [LlamaIndex Jev](https://github.com/WiktorB2004/llama-index-jev) - 非官方 LlamaIndex 重排序（`JevRerank`）与路由（`JevSingleSelector` / `JevMultiSelector`），基于官方 Python SDK
 - [Swift SDK](https://github.com/ainame/swift-typesafe) - 非官方 Swift 6.4 客户端，对齐 Python SDK 0.6.0 API，含 Linux
 - [TypeSafe AI Swift SDK](https://github.com/alterhq/typesafe-sdk-swift) - 非官方零依赖 Swift 6 客户端，支持 Choice / Score / Noul、严格并发、可配置鉴权与重试，以及无网络测试
+- [System One Foundation Models](https://github.com/peterfriese/system-one-foundation-models) - 非官方 Swift 6 桥接库，将 Apple 的 `@Generable` 类型映射为 Noul、Choice 和 Score，支持托管 Jev、HTTP Laya 和设备端 Core ML Laya，并提供置信度路由
 - [discern](https://github.com/doeixd/discern) - 非官方 Effect 库：把 Choice / Noul / Score 答案变成带类型的模式匹配，`Uncertain` 是必须显式处理的分支，并支持可路由的 procedure；录制、回放、缓存与调用预算都做成 `DecisionModel` 中间件。不绑定供应商，通过 `@effect/ai-typesafe` 接入 Jev
 - [kojev（Kotlin Multiplatform）](https://github.com/ItisNoMatter/kojev) - 社区客户端，支持 JVM、Android 和 iOS。Choice 与 Score 的答案直接回到你自己的 enum；只有一种带类型的读取方式，不设默认阈值。Maven Central：`io.github.itisnomatter:kojev:0.1.0`。
 - [jev4k](https://github.com/pambrose/jev4k) - 非官方 JVM Kotlin 客户端：用 DSL 写 Choice、Score 和 Noul，答案以类型化的值读回，包括 enum。Maven Central：`com.pambrose:jev4k`
@@ -135,6 +141,7 @@
 把决策模型放进真实循环里的开源产品与 demo。目前大多使用 Jev。
 
 - [MemSearch](https://github.com/zilliztech/memsearch) - 面向编程 Agent 的 Markdown 记忆系统，提供可选的 Jev Noul 重排器与公开的中英文检索评测；属于社区集成，并非 TypeSafe 官方 SDK
+- [Jev-Mem](https://github.com/libingzheren/Jev-Mem) - 非官方 Agent 记忆系统：Jev 或本地 Laya 负责记忆组织、查询路由、检索预算、候选评分与停止判断，LLM 负责生成答案；[论文](https://arxiv.org/abs/2609.23986)报告了作者在 LoCoMo 上的评测结果
 - [Jev RAG](https://github.com/aifabrice/jev-rag) - 非官方本地优先知识检索应用：使用 SQLite BM25 或 Agent 规划的关键词检索召回候选，以 Jev `Noul` 判断重排证据，并公开可复现的 NFCorpus 评测；默认不需要向量数据库
 - [Jev Deep Research](https://github.com/sunyasheng/JevDeepResearch) - 非官方实验性研究 Agent：Jev 通过 Choice 定位证据、Noul 判断证据是否存在，并行处理文档区域，再由 Pi-Serini 返回原文供 GPT 核查并继续研究
 - [Jev Ultrafast](https://github.com/browser-use/jev-ultrafast) - [Browser Use](https://github.com/browser-use) 的浏览器 Agent。一次请求里由 Jev 选出操作和 DOM 元素；只有 `TYPE_TEXT` 才让小模型写字。Google Flights 苏黎世 → 伦敦约 7 秒。含库、本地 inspector 与测时。
@@ -151,7 +158,6 @@
 - [Mobile Jev](https://github.com/droidrun/mobile-jev) - [Mobilerun](https://mobilerun.ai) 上的 Android Agent：每次点击由 Jev 决定。打开 Uber，旧金山机场 → 金门大桥，约 21 秒 / 9 步到支付页。含实时 studio、CLI 与 traces。不需要 ADB。
 - [Unclutter](https://github.com/kitze/unclutter) - Chrome / Firefox 扩展：Jev 标出页面上不重要的元素，本地按页面模板记住并在下次访问时藏起来。
 - [jevMail](https://github.com/ilyamk/jev-gmail-ai-spam-filter-and-labeling) - 非官方开源 Gmail AI 垃圾邮件过滤、自动标签与收件箱整理工具：Jev 理解每封邮件的意图，应用自定义标签，并可自动归档高置信度的无用邮件
-- [TypeSafe AdBlock](https://github.com/realZachi/typesafe-adblock) - Chrome 扩展：Jev 判断 DOM 元素是不是广告再删掉。自带密钥、无后端。作者写明这是 demo，不是正经广告拦截器
 - [HA-Jev](https://github.com/AboveColin/HA-Jev) - 非官方 Home Assistant 集成：把关于实体状态的类型化提问变成传感器与自动化动作；可直接选取实体、设备或区域来构造 state，并附带用量、成本与每日 token 预算实体
 - [Every](https://github.com/sufianetaouil/every) - 语义代码搜索 CLI：对每个函数问 yes/no，按 Noul 概率排序。
 - [JevPDF](https://github.com/kylemclaren/jevpdf) - 非官方的 PDF 语义版 Ctrl+F：pdf.js 在浏览器中逐行提取文本，Jev 对每一行问一个 Noul（这一行是否回答了问题），命中的行按概率排序并高亮
@@ -204,6 +210,7 @@
 玩具、小站和实时 Agent。
 
 - [Yes / No](https://yesno.coderai.dev) - 免登录 Noul demo。问一句，得到 yes / no / maybe，必要时联网检索。
+- [TypeSafe AdBlock](https://github.com/realZachi/typesafe-adblock) - Chrome 扩展 demo：Jev 判断候选 DOM 元素并移除疑似广告，BYOK、无后端；每页消耗 API token，作者说明了漏删广告和误删元素的局限
 - [Jev Tetris](https://jev-omega.vercel.app) - Jev 根据空洞、堆高、起伏选旋转和落点列。
 - [Jev Pac-Man](https://jev-pacman.ephraimduncan.com) - 迷宫做成 JSON，每个路口由 Jev 选转向，实时玩。
 - [Jev Chess](https://jevchess.com) - 全网对 Jev 的一盘共享棋；每个合法着法都是一个 Choice 问题，概率给棋子上色，实时校准面板为每一步打分。
@@ -282,7 +289,7 @@
 
 ### 排行榜
 
-- [Jev Decision Index](https://huggingface.co/spaces/multimodalart/jev-decision-index) - Hugging Face Space 排行榜：在同一硬件上用 50 多个 benchmark（知识、自动化、理解、创造力）对比 Jev 与数十个开源决策模型，含校准指标
+- [Jev Decision Index](https://huggingface.co/spaces/multimodalart/jev-decision-index) - Hugging Face Space 排行榜：用版本化 benchmark 套件对比 Jev 与开源决策模型，含校准指标和评测方法；开源模型推理耗时与 Jev 托管 HTTPS API 的延迟不可直接比较
 - [JevBench](https://github.com/fstandhartinger/jevbench) - MIT 协议的评测框架与排行榜：534 道英文决策题，分公开题和封存题，同时报告准确率、延迟和价格。讨论：[Show HN](https://news.ycombinator.com/item?id=49800574)。
 - [Jevals.com](https://jevals.com/) - 独立评测：托管 Jev 与六个 LLM 回答同样的 Noul、Choice、Score 问题，按人工标签打分（PubMedQA、Banking77、HelpSteer2），每次决策的日志公开
 - [LangWatch Jev benchmark](https://langwatch.ai/compare/jev-benchmark) - 在 15 个决策任务上对比 Jev 与 7 个 1B 以下开源模型，附 95% 区间、延迟和数据污染检查
@@ -303,6 +310,7 @@
 
 ### 评测工具
 
+- [System One Playground](https://github.com/goodboybeau/system-one-playground) - 本地 Apple Silicon 决策模型工作台，可并排比较 Laya、Decider、Kev、Jev 等引擎，附公开数据集上的准确率与校准评测、输入截断诊断，以及延迟、内存和负载测试
 - [Jev DSPy Lab](https://github.com/jmanhype/jev-dspy-lab) - 非官方 DSPy 配套评测：录制并重放 TypeSafe 调用，测量校准、选择性风险、置信度弃权、延迟、token 和建模成本。
 - [jevcal](https://github.com/abhixhek/jevcal) - 非官方命令行工具：用你自己的标注数据按目标准确率为每个问题拟合置信度阈值，在留出集上验证，给出仍需回退到 LLM 的流量比例，并在 Jev 更新导致已锁定阈值失效时让 CI 失败
 
@@ -341,7 +349,6 @@
 - [awesome-jev-prompts](https://github.com/vicfei/awesome-jev-prompts) - 43 个经过实践检验的 Jev 问题设计模式（Choice/Score/Noul），含模板、阈值与失败模式，另有 10 条反模式。CC0，双语 EN/中文。
 - [MrJev/awesome-jev](https://github.com/MrJev/awesome-jev) - 另一份更严的列表（10 星门槛），[mrjev.com](https://mrjev.com/best-jev-tools/) 上有动手评测，记录每个工具发了什么、发到哪。
 - [Awesome TypeSafe Jev](https://github.com/AbdelStark/awesome-typesafe-jev) - 非官方、附源码链接的 Jev 入门与项目目录，包含类型化判断示例、社区项目卡片、独立评测链接及新贡献者入口
-- [PyPI 上的 typesafe-ai](https://pypi.org/project/typesafe-ai/) - 社区注册的重定向包。真正该装的是 `typesafe-sdk`；此名用于挡住 slopsquatting。与 TypeSafe 无隶属关系。
 - [laya.tools](https://laya.tools) - 非官方目录：收录约 950 个基于开源 Laya 模型的项目，来自 GitHub、npm、Hugging Face 和 X，可按平台和用途浏览，并附 Laya 与 Jev 对比。与 TypeSafe 和 ConvAI 无隶属关系
 - [AgentPlugins JEV 目录](https://agentplugins-2v1.pages.dev/jev-plugins/) - 跨生态 JEV 插件与工具目录：收录 browser-use/jev-ultrafast、Laya、Kev、fast-jev-compaction 等，按 GitHub 星标排序，附[实用 JEV 教程](https://agentplugins-2v1.pages.dev/typesafe/)与 [Laya / Jev / Kev 对比](https://agentplugins-2v1.pages.dev/laya-vs-jev/)。与 TypeSafe 无隶属关系
 

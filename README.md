@@ -32,6 +32,7 @@ API-only models, oldest first. Open-weight models that their publishers also hos
   - [Playground](https://console.typesafe.ai/playground) · [Console](https://console.typesafe.ai) · [GitHub](https://github.com/typesafe-ai) · [Workflow evals](https://evals.typesafe.ai) · [Cookbooks](https://docs.typesafe.ai/llms.txt) · [Patterns](https://docs.typesafe.ai/patterns)
   - [Jev 1.13 jaggedness](https://docs.typesafe.ai/model-jaggedness/jev-1.13) - Known failure modes
   - Community: [Discord](https://discord.gg/typesafe) (builder demos in [Show and Tell](https://discord.com/channels/1483217544214085663/1483217545040232493)) · [X @typesafeai](https://x.com/typesafeai)
+- [meraGPT Decider 1](https://meragpt.com/docs) - Hosted decision model (`state-decider-1`, alias `sd-1`) answering Noul, Choice, and Score through `/v1/systemone`, compatible with the TypeSafe SDK; requests are limited to 4,096 tokens and Choice to ten labels
 - [Solar Decide](https://openrouter.ai/upstage/solar-decide) - Upstage's decision model on Solar Mini 4, in beta, with a 512K context and the same request format as Jev
 - [Span-01](https://www.respan.ai/blog/introducing-span-1) - Respan's behavior classifier for AI traces: for each plain-language behavior you define, such as prompt injection, hallucination, or agent loops, it returns present, absent, or not observable. Span-01 and a Lite tier are on [OpenRouter](https://openrouter.ai/respan/span-01).
 - [d1](https://docs.liquid.ai/lfm/models/decision-models) - Liquid AI's first decision model, served at a `/v1/systemone` endpoint that the TypeSafe SDKs can call, and on [OpenRouter](https://openrouter.ai/liquid/d1). Model size not disclosed.
@@ -50,6 +51,9 @@ Open-weight models you can download and run. Scores are as reported by each proj
 - [Nimble](https://github.com/bespokelabsai/nimble) - Bespoke Labs' 9B LoRA fine-tune of Qwen3.5-9B on contrastively curated synthetic data, with a public 13-dataset benchmark suite. In Ollama as `nimble`.
 - [Tev1](https://huggingface.co/togethercomputer/Tev1-4B-experimental) - Together AI's experimental 4B and 0.8B supervised fine-tunes of Qwen3.5, released with a walkthrough on [training your own decision model for $17](https://www.together.ai/blog/how-to-train-your-own-jev). In Ollama as `tev1`.
 - [Laya](https://github.com/NandhaKishorM/laya) - Convai Innovations' multilingual non-autoregressive decision model: Choice, Score, and Noul in one forward pass, with published weights, a PyPI package, and a router that picks a checkpoint per request
+- [GLiNER2.5-Decide](https://huggingface.co/fastino/GLiNER2.5-Decide) - Fastino's Apache-2.0 DeBERTa-v3-large decision classifier: caller-defined tasks and labels get probabilities in one forward pass through `gliner2` on CPU or GPU, for operational classification, routing, and ordinal scoring
+- [Standard One](https://huggingface.co/StandardThinking/StandardOne-8B) - Standard Thinking's Apache-2.0 3B and 8B decision models on Ministral 3, with a retained Pixtral vision tower: text or images in, option probabilities out through `/v1/systemone`, with merged weights, adapters, GGUF builds, and server code
+- [OpenJev](https://huggingface.co/openjev/openjev) - Independent open-weight decision model that scores caller-defined options in one forward pass, with calibration and serving code; weights are CC BY-NC 4.0 for noncommercial use and helper/server code is Apache-2.0. Separate from SemIf, formerly named OpenJev.
 
 ### Community models
 
@@ -87,10 +91,11 @@ Ways to get decision-model behavior from existing models, usually by reading opt
 
 ## Runtimes & Platforms
 
-Servers and gateways that host decision models behind one API.
+Servers, gateways, and native runtimes for running decision models.
 
 - [Ollama](https://ollama.com/blog/ollama-now-supports-jev-style-decision-models) - Serves `/v1/systemone` locally since 0.35; the first decision models in its library are `nimble` and `tev1`.
 - [Ollaya](https://github.com/ollaya-dev/ollaya) - Ollama-style runtime for decision models: pulls and serves open encoders and decoders (Laya, Von, Kev, Decider, Nimble, Winnow, and more) with each author's calibration, behind `/v1/systemone`; the official TypeSafe Python SDK works against it unchanged. Site: [ollaya.dev](https://ollaya.dev).
+- [Laya-MLX](https://github.com/mizorewww/laya-mlx) - Independent native MLX port of Laya for Apple Silicon: Choice, Score, and Noul without text generation or a cloud API, retaining upstream question formatting and calibration, with published port-fidelity checks and performance measurements
 - [OpenRouter decision models](https://openrouter.ai/models?output_modalities=decisions) - Decision models from several publishers behind OpenRouter's alpha Decisions API, which chat-completions SDKs cannot call. Usage guide as an agent skill: [openrouter-decisions](https://openrouter.ai/skills/openrouter-decisions).
 - [Vercel AI Gateway](https://vercel.com/ai-gateway/models/jev) - Hosts Jev as `typesafe-ai/jev`
 - [stuntd](https://github.com/bladedevoff/stuntd) - Local proxy on the open Laya model that speaks the Jev System One API, records the app's Choice, Score and Noul answers from a Jev upstream, trains a per-question head, and serves it with a calibrated confidence threshold and fallback to the upstream
@@ -99,7 +104,7 @@ Servers and gateways that host decision models behind one API.
 
 Clients for the `/v1/systemone` API, official first. Most were written for TypeSafe's hosted Jev; the official TypeSafe SDKs also work against compatible servers such as Ollaya and Liquid d1. Community packages are not affiliated with any provider unless noted.
 
-- [Python SDK](https://github.com/typesafe-ai/typesafe-sdk-python) - Official client. `pip install typesafe-sdk`. Docs: [Python SDK](https://docs.typesafe.ai/sdk/python).
+- [Python SDK](https://github.com/typesafe-ai/typesafe-sdk-python) - Official client. `pip install typesafe-sdk`. Docs: [Python SDK](https://docs.typesafe.ai/sdk/python). The community [typesafe-ai](https://pypi.org/project/typesafe-ai/) package is a defensive redirect shim; install `typesafe-sdk` directly.
 - [JavaScript / TypeScript SDK](https://github.com/typesafe-ai/typesafe-sdk-js) - Official client. `npm install @typesafe-ai/sdk`. Docs: [JavaScript SDK](https://docs.typesafe.ai/sdk/javascript).
 - [System One adapter (Python)](https://github.com/typesafe-ai/system-one-adapter-python) - Official drop-in `TypeSafeClient` replacement backed by LLM APIs, for comparing Jev against chat models on the same questions. `pip install system-one-adapter`.
 - [Vercel AI SDK provider](https://ai-sdk.dev/providers/ai-sdk-providers/typesafe-ai) - `@ai-sdk/typesafe-ai` plus `experimental_evaluate`. Use `typeSafeAi.evaluationModel('jev-latest')` or the Gateway id `typesafe-ai/jev`.
@@ -108,7 +113,7 @@ Clients for the `/v1/systemone` API, official first. Most were written for TypeS
 - [Jev (Elixir OTP)](https://github.com/dannote/jev) - Hex package [`jev`](https://hex.pm/packages/jev): Jev as a peer GenServer; answers arrive as messages you pattern-match, with network-free tests
 - [Ruby SDK](https://github.com/joshmn/typesafe-sdk) - Community Ruby 3.1+ client: Noul / Choice / Score, retries, model listing, thread-safe pooled HTTP. No async client.
 - [RubyLLM TypeSafe](https://github.com/kieranklaassen/ruby_llm-typesafe) - TypeSafe provider for RubyLLM 2 with offline model metadata and typed responses.
-- [typesafe-ai-rails](https://github.com/GenieRobot/typesafe-ai-rails) - Rails integration on top of the official Python SDK: config, usage/cost telemetry, opt-in confidence policies.
+- [typesafe-ai-rails](https://github.com/GenieRobot/typesafe-ai-rails) - Unofficial Rails integration on the community `typesafe-sdk` Ruby gem: configuration, usage/cost telemetry, and opt-in confidence policies
 - [Rust SDK (typesafe-ai-rs)](https://github.com/gilljon/typesafe-ai-rs) - Independent async and blocking client for System One.
 - [TypeSafe AI for Rust](https://github.com/Twister915/typesafe-ai) - Another Rust client: async + blocking transports, typed responses, observable retries.
 - [typesafe-rs](https://github.com/AbdelStark/typesafe-rs) - Latency-focused Rust transport SDK aiming for behavioral parity with the official clients.
@@ -124,6 +129,7 @@ Clients for the `/v1/systemone` API, official first. Most were written for TypeS
 - [LlamaIndex Jev](https://github.com/WiktorB2004/llama-index-jev) - Unofficial LlamaIndex reranker (`JevRerank`) and router (`JevSingleSelector` / `JevMultiSelector`) on the official Python SDK
 - [Swift SDK](https://github.com/ainame/swift-typesafe) - Unofficial Swift 6.4 client aligned with the Python SDK 0.6.0 API, including Linux
 - [TypeSafe AI Swift SDK](https://github.com/alterhq/typesafe-sdk-swift) - Unofficial dependency-free Swift 6 client for Choice / Score / Noul, with strict concurrency, configurable authentication and retries, and network-free tests
+- [System One Foundation Models](https://github.com/peterfriese/system-one-foundation-models) - Unofficial Swift 6 bridge mapping Apple's `@Generable` types to Noul, Choice, and Score, with hosted Jev, HTTP Laya, and on-device Core ML Laya backends plus confidence routing
 - [discern](https://github.com/doeixd/discern) - Unofficial Effect library: Choice / Noul / Score answers become typed patterns with an explicit `Uncertain` branch you must handle, plus routable procedures, with recording, replay, caching and call budgets as `DecisionModel` middleware. Provider-neutral; reaches Jev through `@effect/ai-typesafe`
 - [kojev (Kotlin Multiplatform)](https://github.com/ItisNoMatter/kojev) - Community client for JVM, Android, and iOS. Choice and Score answers come back as your own enums; one typed way to read them, no default thresholds. Maven Central: `io.github.itisnomatter:kojev:0.1.0`.
 - [jev4k](https://github.com/pambrose/jev4k) - Unofficial JVM Kotlin client: Choice, Score, and Noul as a DSL, with answers read back as typed values including enums. Maven Central: `com.pambrose:jev4k`
@@ -135,6 +141,7 @@ Clients for the `/v1/systemone` API, official first. Most were written for TypeS
 Open-source products and demos that put a decision model in a real loop. Most use Jev today.
 
 - [MemSearch](https://github.com/zilliztech/memsearch) - Markdown memory for coding agents with an optional Jev Noul reranker and a published English/Chinese retrieval evaluation; community integration, not an official TypeSafe SDK
+- [Jev-Mem](https://github.com/libingzheren/Jev-Mem) - Unofficial agent memory system where Jev or local Laya controls memory organization, query routing, retrieval budgets, candidate scoring, and stopping while an LLM writes answers; its [paper](https://arxiv.org/abs/2609.23986) reports LoCoMo results
 - [Jev RAG](https://github.com/aifabrice/jev-rag) - Unofficial local-first knowledge search app using SQLite BM25 or agent-planned lexical retrieval, Jev `Noul` judgments for evidence reranking, and a published reproducible NFCorpus evaluation; no vector database is required by default
 - [Jev Deep Research](https://github.com/sunyasheng/JevDeepResearch) - Unofficial experimental research agent: Jev Choice locates evidence and Noul checks its presence across document regions in parallel; Pi-Serini returns original passages for GPT to verify and continue
 - [Jev Ultrafast](https://github.com/browser-use/jev-ultrafast) - Browser agent from [Browser Use](https://github.com/browser-use). Jev picks an operation and a DOM element in one request; a small LLM writes text only for `TYPE_TEXT`. Zürich → London on Google Flights in ~7s. Library, local inspector, and measurements included.
@@ -151,7 +158,6 @@ Open-source products and demos that put a decision model in a real loop. Most us
 - [Mobile Jev](https://github.com/droidrun/mobile-jev) - Android agent on [Mobilerun](https://mobilerun.ai): Jev decides each tap. Opens Uber, SFO → Golden Gate, payment screen in ~21s / 9 actions. Live studio, CLI, and traces. No ADB.
 - [Unclutter](https://github.com/kitze/unclutter) - Chrome / Firefox extension: Jev classifies nonessential page elements; local template rules hide them on later visits.
 - [jevMail](https://github.com/ilyamk/jev-gmail-ai-spam-filter-and-labeling) - Unofficial open-source Gmail AI spam filter, auto-labeler, and inbox organizer: Jev understands each email's intent to apply custom labels and optionally archive high-confidence unwanted mail
-- [TypeSafe AdBlock](https://github.com/realZachi/typesafe-adblock) - Chrome extension: Jev judges whether a DOM element is an ad and removes it. BYOK, no backend. Author calls it a demo, not a real ad blocker
 - [HA-Jev](https://github.com/AboveColin/HA-Jev) - Unofficial Home Assistant integration: typed questions about entity state become sensors and automation actions, with a target picker that builds the state from the user's own entities and usage, cost, and daily-budget entities alongside the answers
 - [Every](https://github.com/sufianetaouil/every) - Semantic code-search CLI: a yes/no question against every function, ranked by Noul probability.
 - [JevPDF](https://github.com/kylemclaren/jevpdf) - Unofficial Ctrl+F by meaning for PDFs: pdf.js extracts lines in the browser, Jev answers one Noul per line on whether it answers the query, and matching lines light up ranked by probability
@@ -204,6 +210,7 @@ Open-source products and demos that put a decision model in a real loop. Most us
 Toys, live sites, and realtime agents.
 
 - [Yes / No](https://yesno.coderai.dev) - Free no-signup Noul demo. Ask a question, get yes / no / maybe, with web search when needed.
+- [TypeSafe AdBlock](https://github.com/realZachi/typesafe-adblock) - Chrome extension demo: Jev judges candidate DOM elements and removes likely ads, with BYOK and no backend; each page consumes API tokens and the author documents missed ads and mistaken removals
 - [Jev Tetris](https://jev-omega.vercel.app) - Jev picks rotation and column from holes, stack height, and bumpiness.
 - [Jev Pac-Man](https://jev-pacman.ephraimduncan.com) - Maze as JSON; Jev picks the turn at each junction in realtime.
 - [Jev Chess](https://jevchess.com) - One shared board, the internet vs Jev; every legal move is one Choice question, probabilities shade the pieces, live calibration panel scores every move.
@@ -282,7 +289,7 @@ Leaderboards first, then single-task studies and evaluation tooling. Most studie
 
 ### Leaderboards
 
-- [Jev Decision Index](https://huggingface.co/spaces/multimodalart/jev-decision-index) - Hugging Face Space ranking Jev against dozens of open decision models on more than 50 benchmarks covering knowledge, automation, understanding, and creativity, all run on the same hardware, with calibration metrics
+- [Jev Decision Index](https://huggingface.co/spaces/multimodalart/jev-decision-index) - Hugging Face Space comparing Jev with open decision models on a versioned benchmark suite, with calibration metrics and documented methods; open-model inference timings and Jev's hosted HTTPS latency are not directly comparable
 - [JevBench](https://github.com/fstandhartinger/jevbench) - MIT-licensed harness and leaderboard of 534 English decisions with public and sealed tiers, reporting accuracy, latency, and price together. Discussion: [Show HN](https://news.ycombinator.com/item?id=49800574).
 - [Jevals.com](https://jevals.com/) - Independent benchmark of hosted Jev and six LLMs on the same Noul, Choice and Score questions, graded against human labels (PubMedQA, Banking77, HelpSteer2), with per-decision logs as open data
 - [LangWatch Jev benchmark](https://langwatch.ai/compare/jev-benchmark) - Jev against seven open models under 1B on 15 decision tasks, with 95% intervals, latency, and contamination checks
@@ -303,6 +310,7 @@ Leaderboards first, then single-task studies and evaluation tooling. Most studie
 
 ### Tooling
 
+- [System One Playground](https://github.com/goodboybeau/system-one-playground) - Local Apple Silicon workbench comparing Laya, Decider, Kev, Jev, and other engines side by side, with public-dataset benchmarks for accuracy and calibration, input-truncation diagnostics, latency, memory, and load tests
 - [Jev DSPy Lab](https://github.com/jmanhype/jev-dspy-lab) - Unofficial DSPy companion that records and replays TypeSafe calls while measuring calibration, selective risk, confidence-gated abstention, latency, tokens, and modeled cost.
 - [jevcal](https://github.com/abhixhek/jevcal) - Unofficial CLI that fits a per-question confidence threshold to a target accuracy on your own labeled data, verifies it on a held-out split, shows how much traffic still needs an LLM fallback, and fails CI when a Jev update breaks the locked thresholds
 
@@ -341,7 +349,6 @@ Community cookbooks.
 - [awesome-jev-prompts](https://github.com/vicfei/awesome-jev-prompts) - 43 field-tested Jev question patterns (Choice/Score/Noul) with templates, thresholds, and failure modes, plus 10 anti-patterns. CC0, bilingual EN/中文.
 - [MrJev/awesome-jev](https://github.com/MrJev/awesome-jev) - Selective list behind a 10-star bar, with hands-on reviews at [mrjev.com](https://mrjev.com/best-jev-tools/) recording what each tool sends and where.
 - [Awesome TypeSafe Jev](https://github.com/AbdelStark/awesome-typesafe-jev) - Unofficial source-backed Jev field guide with a typed-decision walkthrough, community project cards, independent evaluation links, and a first-contribution path
-- [typesafe-ai on PyPI](https://pypi.org/project/typesafe-ai/) - Community redirect shim. The real package is `typesafe-sdk`; this name was registered to block slopsquatting. Not affiliated with TypeSafe.
 - [laya.tools](https://laya.tools) - Unofficial directory of about 950 projects built on the open Laya model, from GitHub, npm, Hugging Face and X, browsable by platform and use case, with a Laya vs Jev comparison. Not affiliated with TypeSafe or ConvAI
 - [AgentPlugins JEV directory](https://agentplugins-2v1.pages.dev/jev-plugins/) - Cross-ecosystem JEV plugin & tool directory covering browser-use/jev-ultrafast, Laya, Kev and fast-jev-compaction, ranked by GitHub stars, with a practical [JEV tutorial](https://agentplugins-2v1.pages.dev/typesafe/) and a [Laya vs Jev vs Kev comparison](https://agentplugins-2v1.pages.dev/laya-vs-jev/). Not affiliated with TypeSafe.
 
