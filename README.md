@@ -276,6 +276,7 @@ Community cookbooks.
 
 ## Related
 
+- [awesome-jev-prompts](https://github.com/vicfei/awesome-jev-prompts) - 43 field-tested Jev question patterns (Choice/Score/Noul) with templates, thresholds, and failure modes, plus 10 anti-patterns. CC0, bilingual EN/中文.
 - [MrJev/awesome-jev](https://github.com/MrJev/awesome-jev) - Selective list behind a 10-star bar, with hands-on reviews at [mrjev.com](https://mrjev.com/best-jev-tools/) recording what each tool sends and where.
 - [Awesome TypeSafe Jev](https://github.com/AbdelStark/awesome-typesafe-jev) - Unofficial source-backed Jev field guide with a typed-decision walkthrough, community project cards, independent evaluation links, and a first-contribution path
 - [typesafe-ai on PyPI](https://pypi.org/project/typesafe-ai/) - Community redirect shim. The real package is `typesafe-sdk`; this name was registered to block slopsquatting. Not affiliated with TypeSafe.

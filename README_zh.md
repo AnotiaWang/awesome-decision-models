@@ -276,6 +276,7 @@
 
 ## 相关
 
+- [awesome-jev-prompts](https://github.com/vicfei/awesome-jev-prompts) - 43 个经过实践检验的 Jev 问题设计模式（Choice/Score/Noul），含模板、阈值与失败模式，另有 10 条反模式。CC0，双语 EN/中文。
 - [MrJev/awesome-jev](https://github.com/MrJev/awesome-jev) - 另一份更严的列表（10 星门槛），[mrjev.com](https://mrjev.com/best-jev-tools/) 上有动手评测，记录每个工具发了什么、发到哪。
 - [Awesome TypeSafe Jev](https://github.com/AbdelStark/awesome-typesafe-jev) - 非官方、附源码链接的 Jev 入门与项目目录，包含类型化判断示例、社区项目卡片、独立评测链接及新贡献者入口
 - [PyPI 上的 typesafe-ai](https://pypi.org/project/typesafe-ai/) - 社区注册的重定向包。真正该装的是 `typesafe-sdk`；此名用于挡住 slopsquatting。与 TypeSafe 无隶属关系。
