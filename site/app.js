@@ -5,6 +5,11 @@
   var empty = document.getElementById("empty");
   var sections = Array.prototype.slice.call(document.querySelectorAll("[data-section]"));
 
+  // Umami custom events. No-op when the tracker is absent or filtered by data-domains.
+  function track(name, data) {
+    if (window.umami && typeof window.umami.track === "function") window.umami.track(name, data);
+  }
+
   // --- Language ---
 
   function setLang(lang, save) {
@@ -24,7 +29,10 @@
   }
 
   document.querySelectorAll("[data-set-lang]").forEach(function (b) {
-    b.addEventListener("click", function () { setLang(b.dataset.setLang, true); });
+    b.addEventListener("click", function () {
+      if (b.dataset.setLang !== root.dataset.lang) track("lang", { lang: b.dataset.setLang });
+      setLang(b.dataset.setLang, true);
+    });
   });
 
   // --- Search ---
@@ -55,7 +63,37 @@
       : "";
   }
 
-  search.addEventListener("input", filter);
+  // Report the query once typing pauses, not on every keystroke.
+  var searchTimer, lastQuery = "";
+  search.addEventListener("input", function () {
+    filter();
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(function () {
+      var q = search.value.trim().toLowerCase();
+      if (q.length < 2 || q === lastQuery) return;
+      lastQuery = q;
+      var results = document.querySelectorAll(".entry:not([hidden])").length;
+      track("search", { query: q.slice(0, 100), results: results });
+    }, 1200);
+  });
+
+  // Outbound clicks: which entries people actually open. auxclick covers middle-click.
+  function onLinkClick(e) {
+    if (e.type === "auxclick" && e.button !== 1) return;
+    var a = e.target.closest("main a[href^='http']");
+    if (!a) return;
+    var entry = a.closest(".entry");
+    var name = entry && entry.querySelector(".entry-name");
+    var sec = a.closest("[data-section]");
+    track("outbound", {
+      url: a.href,
+      entry: name ? name.getAttribute("href") : "",
+      section: sec ? sec.id : "other",
+      lang: root.dataset.lang,
+    });
+  }
+  document.addEventListener("click", onLinkClick);
+  document.addEventListener("auxclick", onLinkClick);
   document.addEventListener("keydown", function (e) {
     if (e.key === "/" && document.activeElement !== search) {
       e.preventDefault();
