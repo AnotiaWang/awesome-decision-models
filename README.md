@@ -75,6 +75,7 @@ Open-weight models you can download and run. Scores are as reported by each proj
 - [reflex](https://github.com/kshetrajna12/reflex) - Small decision model on a frozen Qwen3.5-4B: one `/v1/systemone` endpoint answered by a single forward pass in about 200 ms, compared against Jev on JevBench's public items
 - [imajev](https://huggingface.co/mohit67890/imajev-4b) - Apache-2.0 4B LoRA on Qwen3.5-4B for decisions about photos: checks a photo against your record or compares two photos, with a trained `unknown` probability so the app can stop instead of guessing. Jev's request shape plus `images`; runs with MLX or PyTorch.
 - [NeoHorse-Jev-4B](https://huggingface.co/TokenRhythm/NeoHorse-Jev-4B) - TokenRhythm's Apache-2.0 4B decision model on NeoHorse-1-4B: text or a single image with text, prefill-only inference, served at `/v1/systemone`
+- [WaterSheep](https://github.com/SamratDuttaOfficial/WaterSheep) - Apache-2.0 open-weight decision model for text: Noul, Choice, Score, and multi-label questions get a calibrated probability for every option, served by a local `/v1/systemone` server that TypeSafe's Python SDK works with unchanged
 
 ## Inference Techniques
 
