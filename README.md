@@ -2,7 +2,7 @@
 
 A curated list of decision models (also called System One models or typed decision models) and the APIs, runtimes, tools, applications, benchmarks, and research around them.
 
-**[English](README.md)** | **[简体中文](README_zh.md)**
+**[English](README.md)** | **[简体中文](README_zh.md)** · [Website](https://anotiawang.github.io/awesome-decision-models/)
 
 A decision model reads a state (text, JSON, and for some models images) plus questions whose answers you declare up front, and returns a probability for every answer instead of generated text. Questions come in three shapes: Noul (the probability that a statement is true), Choice (one of your options), and Score (a level on an ordered rubric). TypeSafe AI introduced the category in September 2026 with [Jev](https://docs.typesafe.ai/introduction) and its `/v1/systemone` API, and many of the models and runtimes below accept the same request shape.
 

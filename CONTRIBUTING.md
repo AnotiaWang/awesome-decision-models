@@ -39,6 +39,8 @@ Please skip:
 
 New sections are fine when a category has three or more items.
 
+The [website](https://anotiawang.github.io/awesome-decision-models/) is generated from both READMEs on every merge, so there is nothing else to edit. A CI check fails the pull request if the two files list different links or put a link in different sections; run `python3 scripts/build_site.py --strict` to check locally.
+
 ## Style
 
 - American English in `README.md`; Simplified Chinese in `README_zh.md`.
@@ -90,6 +92,8 @@ If you are not sure a project fits, open an issue first.
 6. 提交 PR。正文说明：项目是什么、用的是哪个决策模型以及怎么用、为什么值得收录。
 
 某一类满 3 个条目时，可以新开章节。
+
+[网页版](https://anotiawang.github.io/awesome-decision-models/?lang=zh)在每次合并后由两份 README 自动生成，不需要另外修改。如果两份文件收录的链接不一致，或者同一链接放在了不同章节，PR 的 CI 检查会失败；本地可以运行 `python3 scripts/build_site.py --strict` 自查。
 
 ## 文风
 
