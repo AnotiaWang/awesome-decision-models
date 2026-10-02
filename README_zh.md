@@ -1,41 +1,103 @@
-# Awesome Jev [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Decision Models [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-精选的 [Jev](https://docs.typesafe.ai/introduction) 应用、库、工具与研究。
+精选的决策模型（decision model，也称 System One 模型、类型化决策模型）资源，以及围绕它们的 API、运行时、工具、应用、评测与研究。
 
 **[English](README.md)** | **[简体中文](README_zh.md)**
 
-非官方整理，与 [TypeSafe AI](https://typesafe.ai) 无隶属关系。2026 年 9 月 21 日起公开开放 access，密钥在 [控制台](https://console.typesafe.ai/settings/keys)。欢迎 PR。
+决策模型读入一段状态（文本、JSON，部分模型也支持图片），再加上答案事先声明好的问题，为每个答案返回一个概率，而不是生成文本。问题有三种形态：Noul（某个陈述为真的概率）、Choice（从你给的选项里选一个）和 Score（在有序量表上的等级）。TypeSafe AI 在 2026 年 9 月用 [Jev](https://docs.typesafe.ai/introduction) 和它的 `/v1/systemone` API 开创了这一类别，下面许多模型和运行时都接受同样的请求格式。
+
+由社区维护，与任何模型厂商无隶属关系。欢迎 PR。
 
 ## 目录
 
-- [官方资源](#官方资源)
-- [社区](#社区)
+- [托管 API](#托管-api)
+- [开源模型](#开源模型)
+- [推理方法](#推理方法)
+- [运行时与平台](#运行时与平台)
 - [SDK 与客户端](#sdk-与客户端)
 - [应用](#应用)
 - [Demo 与游戏](#demo-与游戏)
 - [Agent 工具](#agent-工具)
-- [研究与开源模型](#研究与开源模型)
+- [评测与排行榜](#评测与排行榜)
+- [论文](#论文)
 - [文章](#文章)
+- [相关](#相关)
 - [贡献](#贡献)
 
-## 官方资源
+## 托管 API
 
-- [文档](https://docs.typesafe.ai/introduction) - API、SDK、[cookbook](https://docs.typesafe.ai/llms.txt)、[模式](https://docs.typesafe.ai/patterns)
-- [Playground](https://console.typesafe.ai/playground)
-- [控制台](https://console.typesafe.ai) - 密钥与用量
-- [GitHub](https://github.com/typesafe-ai)
-- [Workflow evals](https://evals.typesafe.ai)
-- [Jev 1.13 jaggedness](https://docs.typesafe.ai/model-jaggedness/jev-1.13) - 已知失败模式
-- [Vercel AI Gateway](https://vercel.com/ai-gateway/models/jev) - 托管的 `typesafe-ai/jev`
+只提供 API 的模型，按发布时间排序。厂商同时托管的开源权重模型（如 Clef、pplx-decider）放在[开源模型](#开源模型)。
 
-## 社区
+- [Jev](https://docs.typesafe.ai/introduction) - TypeSafe AI 的第一个 System One 模型，也是 `/v1/systemone` API 的源头：一次请求里对文本状态回答 Noul、Choice 和 Score 问题。密钥在[控制台](https://console.typesafe.ai/settings/keys)获取；也可以通过 Vercel AI Gateway、Cloudflare Workers AI 和 OpenRouter 调用。
+  - [Playground](https://console.typesafe.ai/playground) · [控制台](https://console.typesafe.ai) · [GitHub](https://github.com/typesafe-ai) · [Workflow evals](https://evals.typesafe.ai) · [Cookbook](https://docs.typesafe.ai/llms.txt) · [模式](https://docs.typesafe.ai/patterns)
+  - [Jev 1.13 jaggedness](https://docs.typesafe.ai/model-jaggedness/jev-1.13) - 已知失败模式
+  - 社区：[Discord](https://discord.gg/typesafe)（builder demo 在 [Show and Tell](https://discord.com/channels/1483217544214085663/1483217545040232493)）· [X @typesafeai](https://x.com/typesafeai)
+- [Solar Decide](https://openrouter.ai/upstage/solar-decide) - Upstage 基于 Solar Mini 4 的决策模型，目前为 beta，512K 上下文，请求格式与 Jev 相同
+- [Span-01](https://www.respan.ai/blog/introducing-span-1) - Respan 面向 AI trace 的行为分类模型：对你用自然语言定义的每种行为（提示注入、幻觉、Agent 死循环等）判断为出现、未出现或无法观察。Span-01 及其 Lite 版已上架 [OpenRouter](https://openrouter.ai/respan/span-01)。
+- [d1](https://docs.liquid.ai/lfm/models/decision-models) - Liquid AI 的第一个决策模型，提供可用 TypeSafe SDK 调用的 `/v1/systemone` 端点，也上架了 [OpenRouter](https://openrouter.ai/liquid/d1)。未公开模型规模。
+- [OpenAI Decisions API](https://openai.com/index/devday-2026-recap) - 在 DevDay 2026 发布，基于 Luna：输入上下文、问题和一组封闭的候选答案，返回一个答案及其置信度。目前为 limited preview，尚未公布定价。
+- [Mercury Decide](https://openrouter.ai/inception/mercury-decide) - Inception 的决策模型，OpenRouter 上有免费线路；Inception 称每秒最多可做 14 次决策。
 
-- [Discord](https://discord.gg/typesafe) - Builder demo 在 [Show and Tell](https://discord.com/channels/1483217544214085663/1483217545040232493)
-- [X @typesafeai](https://x.com/typesafeai)
+## 开源模型
+
+可以下载并自行运行的开源权重模型。分数均为各项目在自选 benchmark 上的自报结果，不同条目之间不可直接比较。
+
+### 公司与机构发布
+
+- [Clef](https://huggingface.co/Cloudflare/clef) - Cloudflare 基于 Qwen3.8-27B 后训练的 Apache-2.0 决策模型：Clef 可读文本、JSON、图片或视频，对所有问题的所有选项联合打分；Clef-flash 是更小更快的版本。两者都托管在 Workers AI 上，API 与 Jev 兼容。发布文章附 Jev Decision Index 成绩：[blog](https://blog.cloudflare.com/clef-decision-models)。
+- [pplx-decider-v1-27b](https://huggingface.co/perplexity-ai/pplx-decider-v1-27b) - Perplexity 基于 Qwen3.8-27B 微调的 Apache-2.0 多模态决策模型；模型卡报告 11 项 benchmark 平均 85.71%，Jev 为 84.51%。也可通过 [Perplexity Decisions API](https://docs.perplexity.ai/docs/decisions/quickstart) 调用。
+- [Strands Decider 2B](https://github.com/strands-labs/strands-decider) - AWS Strands Labs 的决策模型：把 Qwen3.5-2B 的 LM head 换成约一百万参数的 pointer head 为每个选项打分，并加 rank-16 LoRA。权重、训练数据和脚本全部公开；[发布文章](https://strandsagents.com/blog/introducing-strands-decider)用它在 Strands Agent 调用工具前做检查。
+- [Nimble](https://github.com/bespokelabsai/nimble) - Bespoke Labs 用对比式筛选的合成数据对 Qwen3.5-9B 做的 9B LoRA 微调，附公开的 13 个数据集评测套件。Ollama 中名为 `nimble`。
+- [Tev1](https://huggingface.co/togethercomputer/Tev1-4B-experimental) - Together AI 基于 Qwen3.5 的实验性监督微调模型（4B 和 0.8B），同时发布了[花 17 美元训练自己的决策模型](https://www.together.ai/blog/how-to-train-your-own-jev)的教程。Ollama 中名为 `tev1`。
+- [Laya](https://github.com/NandhaKishorM/laya) - Convai Innovations 的多语言非自回归决策模型：一次前向完成 Choice、Score 和 Noul，权重和 PyPI 包已公开，并按请求选择检查点
+
+### 社区模型
+
+- [Kev](https://github.com/jaredpalmer/kev) - Qwen3.5 决策模型（0.8B、4B、9B），可以自己训练和部署。一次前向完成 Choice、Score 和 Noul，权重和固定评测集已公开，本地服务实现 `/v1/systemone`。
+- [Von](https://github.com/wfzyx/von) - 本地非自回归 System One 模型，服务端兼容 `/v1/systemone`，带 Doom 演示：每步动作是一次前向
+- [NanoJev](https://github.com/TianyuCodings/NanoJev) - 0.6B 并行决策模型：输入状态和问题，一次前向给出完整分布，不解码文本。权重已公开，同一检查点可玩 ViZDoom、迷宫和贪吃蛇；作者自己的 ViZDoom Basic 划分上是 128/128，对照 Jev 为 56/128。
+- [jevlike](https://github.com/vinnylarouge/jevlike) - 训练一个小的单次 scorer：上下文 + N 个文本选项 → 每个选项一个概率。含 Doom / 国际象棋视觉 demo，以及 Wikispeedia 下一跳例子。明确*不是* TypeSafe 架构或 RLCD 的复现。
+- [decider](https://github.com/Mapika/decider) - 基于 Qwen3.5-2B 的微调：一次前向就给出类型化决策和校准概率
+- [RSI-Jev](https://github.com/Shanghua-Gao/RSI-Jev) - 由递归自我改进（RSI）的 AI 研究系统训练的 Jev-like 模型，公开每一次实验（包括失败的）。2B Qwen3.5，一次前向给出 Choice、Score、Noul，可读文本或最多四张图片（v4.0-VL），开放权重，提供兼容 `/v1/systemone` 的服务。
+- [jev-style](https://github.com/lawrence3699/jev-style) - 0.8B 决策模型（Qwen3.5 微调），`pip install "jev-style[torch]"`（Apple 芯片用 `[mlx]`）即可在本地运行（PyTorch、MLX，或配合单独编译的打分程序用 llama.cpp），提供兼容 `/v1/systemone` 的服务：一次前向回答 Choice、Score、Noul，并附带 MCP 服务和 Claude Code 守门钩子
+- [PlayJev](https://github.com/OmniJev/PlayJev) - Qwen3.5-0.8B-Base 微调后从 448 px 画面玩十款浏览器小游戏：每步一次前向，概率直接从选项字母上读出，不生成任何文本。权重和十款游戏的浏览器 demo 都已公开。
+- [OneJev](https://github.com/OmniJev/OneJev) - OmniJev 团队的开源多模态 System One 模型，四种尺寸（0.8B 到 27B）：对截图、照片、视频或文本提出 Choice、Score、Noul，一次前向为每个选项给出校准概率。权重在 Hugging Face。
+- [jevos](https://github.com/feder-cr/jev) - 1B 决策模型，面向纯 CPU 笔记本：把 MiniCPM5 裁剪到 17 层并接一个单 logit 输出头，GGUF q4_k_m 量化后 619 MB，跑在 llama.cpp 上不需要 GPU，短请求约 54 ms。只支持 Jev `/v1/systemone` 协议里的 Noul（是/否）问题，Choice 和 Score 会返回 422。
+- [WebJev](https://github.com/lexmount/WebJev) - 浏览器 agent 决策模型，接口与 Jev 兼容：基于 Qwen3.5-35B-A3B 微调，在 Jev Ultrafast 循环中选择下一步操作和目标元素，提供兼容 `/v1/systemone` 的服务。在 125 个由确定性判据评分的真实网站任务上，同一 agent 中完成率为 38.5%，Jev 1.13 为 16.7%。公开 Apache-2.0 权重、训练数据、训练方法和演示应用。
+- [Vev](https://github.com/Xiaooolong/vev) - 支持视觉输入的 Jev 开源实现，基于 Qwen3.5 4B / 9B 微调。截图、照片可以直接放进 state，Choice、Score、Noul 结合文本与图像作答，概率直接从标签 token 上读出，不生成文本。提供兼容 `/v1/systemone` 的服务，代码与权重开源，权重仅限非商用。
+- [JEV-27B](https://huggingface.co/autotrust/JEV-27B) - AutoTrust 以 Jev 1.13 为教师、在 Qwen3.8-27B 上蒸馏的 Apache-2.0 模型；同一个 vLLM 引擎既提供决策，也提供未改动的 Qwen 用于普通生成。作者自测六个公开决策 benchmark 平均 84.07，Jev 为 83.85。较小版本：[JEV-9B](https://huggingface.co/autotrust/JEV-9B)。
+- [Winnow](https://huggingface.co/EldanRing/Winnow-12B) - 面向类型化决策的 Apache-2.0 Gemma 4 微调（12B 和 E4B），基于 llama.cpp 的服务同时提供 `/v1/systemone` 和 `/v1/chat/completions`。
+- [JevK5](https://github.com/allebee/jevk5) - 基于 Qwen3.5 的 Apache-2.0 决策模型（2B、4B、9B），提供 `/v1/systemone` 服务，并有可在 CPU 和 GPU 上用 llama.cpp 运行的 GGUF 版本
+- [reflex](https://github.com/kshetrajna12/reflex) - 基于冻结 Qwen3.5-4B 的小型决策模型：单个 `/v1/systemone` 端点，一次前向约 200 ms 作答，并在 JevBench 公开题上与 Jev 对比
+- [imajev](https://huggingface.co/mohit67890/imajev-4b) - 基于 Qwen3.5-4B 的 Apache-2.0 4B LoRA，用于针对照片的决策：把照片和你的记录核对，或比较两张照片；训练了 `unknown` 概率，应用可以停下而不是瞎猜。请求格式为 Jev 的格式外加 `images`，可用 MLX 或 PyTorch 运行。
+- [NeoHorse-Jev-4B](https://huggingface.co/TokenRhythm/NeoHorse-Jev-4B) - TokenRhythm 基于 NeoHorse-1-4B 的 Apache-2.0 4B 决策模型：输入文本或单张图片加文本，只做 prefill 推理，提供 `/v1/systemone` 服务
+
+## 推理方法
+
+不训练或少量训练、直接让现有模型表现得像决策模型的方法，通常是在一次前向中读出各选项的概率。
+
+- [SemIf](https://github.com/TheoLeeCJ/SemIf-OpenJev) - 原名 OpenJev。用开源模型在家用 RTX 3090 和浏览器里做类型化决策，直接读选项 logits，不生成文本。
+- [LitJev](https://github.com/zhengxuyu/litjev) - Jev 的复现：把任意 Qwen 模型变成快速决策模型，提供与 Jev 相同的 `/v1/systemone` schema（Choice、Score、Noul），不训练、不生成回答文本
+- [TetraJev](https://github.com/FeiLiuEM/tetrajev) - 可本地部署的决策层，处理跨领域的复杂决策：两个冻结的开源权重读取器对每条样本给出四次读数（选项字母，以及逐候选项的是/否），无拟合地融合，再按一致性路由并设有校准后的放行门；已在八个决策套件和 RAG 重排上评测，包括 DecisionBench 的 35 类真实任务。全程不训练。
+- [jevmlx](https://github.com/bnsd55/jevmlx) - 给任意 MLX 模型做 Jev 风格并行约束决策：一次前向得到带概率的、按 schema 合法的 JSON
+- [JEVfire](https://github.com/kikoncuo/jevfire) - CUDA LLM 上的 Jev 风格并行决策（vLLM），带浏览器马里奥 demo（本地约 71 ms/步）
+- [PocketJev](https://github.com/NullPo-jp/PocketJev) - iPhone 端侧视觉判断：MLX + Qwen3-VL 选项 logits。相机 + 三选一，不生成文字，约 1 秒，不存照片。
+- [jev-visual](https://github.com/hr98w/jev-visual) - Apple Silicon 上的教学向 Jev 风格视觉推理：共享多模态上下文、候选打分，含分拣厂 / Breakout / 手势 demo
+- [DiffusionGemma 决策端点](https://huggingface.co/spaces/victor/DiffusionGemma-free-endpoint) - 免费的 Hugging Face Space：不做微调，直接从 DiffusionGemma 读出每个答案的概率，对外使用 `/v1/systemone` 协议
+
+## 运行时与平台
+
+在统一 API 后面托管决策模型的服务端与网关。
+
+- [Ollama](https://ollama.com/blog/ollama-now-supports-jev-style-decision-models) - 从 0.35 起在本地提供 `/v1/systemone`；模型库里首批决策模型是 `nimble` 和 `tev1`。
+- [Ollaya](https://github.com/ollaya-dev/ollaya) - 面向决策模型的 Ollama 式运行时：拉取并运行开源 encoder 与 decoder 模型（Laya、Von、Kev、Decider、Nimble、Winnow 等），沿用各作者的校准，对外提供 `/v1/systemone`；官方 TypeSafe Python SDK 无需修改即可连接。官网：[ollaya.dev](https://ollaya.dev)。
+- [OpenRouter 决策模型](https://openrouter.ai/models?output_modalities=decisions) - OpenRouter alpha 版 Decisions API 上多家发布方的决策模型；chat completions SDK 无法调用该 API。使用指南以 Agent skill 形式提供：[openrouter-decisions](https://openrouter.ai/skills/openrouter-decisions)。
+- [Vercel AI Gateway](https://vercel.com/ai-gateway/models/jev) - 以 `typesafe-ai/jev` 托管 Jev
+- [stuntd](https://github.com/bladedevoff/stuntd) - 基于开放 Laya 模型的本地代理，实现 Jev System One API；记录来自 Jev 上游的 Choice、Score 和 Noul 答案，为每个问题训练一个决策头，并以校准过的置信度阈值提供服务，低于阈值时回退到上游
 
 ## SDK 与客户端
 
-官方在前，社区在后。除非另行说明，社区包与 TypeSafe 无隶属关系。
+调用 `/v1/systemone` API 的客户端，官方在前。大多数是为 TypeSafe 托管的 Jev 编写的；官方 TypeSafe SDK 也能连接 Ollaya、Liquid d1 等兼容服务。除非另行说明，社区包与任何厂商都无隶属关系。
 
 - [Python SDK](https://github.com/typesafe-ai/typesafe-sdk-python) - 官方客户端。`pip install typesafe-sdk`。文档：[Python SDK](https://docs.typesafe.ai/sdk/python)。
 - [JavaScript / TypeScript SDK](https://github.com/typesafe-ai/typesafe-sdk-js) - 官方客户端。`npm install @typesafe-ai/sdk`。文档：[JavaScript SDK](https://docs.typesafe.ai/sdk/javascript)。
@@ -66,12 +128,11 @@
 - [kojev（Kotlin Multiplatform）](https://github.com/ItisNoMatter/kojev) - 社区客户端，支持 JVM、Android 和 iOS。Choice 与 Score 的答案直接回到你自己的 enum；只有一种带类型的读取方式，不设默认阈值。Maven Central：`io.github.itisnomatter:kojev:0.1.0`。
 - [jev4k](https://github.com/pambrose/jev4k) - 非官方 JVM Kotlin 客户端：用 DSL 写 Choice、Score 和 Noul，答案以类型化的值读回，包括 enum。Maven Central：`com.pambrose:jev4k`
 - [hunch](https://github.com/steven-shoemaker/hunch) - 非官方 Python 库（另有 TypeScript 版本），把 Choice / Score / Noul 变成作用于列表和 DataFrame 的函数（classify、score、check、where、extract、pick、rank、verify），支持请求去重、缓存，并可把不确定的行交给 LLM 在同一组标签中复核
-
 - [JevT++](https://github.com/wiatrM/jevtpp) - 非官方 C++20 库，提供编译期枚举模式、类型化决策与弃权机制、本地 Laya 后端及可选的 TypeSafe System One HTTP 客户端；远程测试使用模拟响应和本地 HTTP 服务，尚未验证真实服务兼容性
 
 ## 应用
 
-把 Jev 放进真实循环里的开源产品与 demo。
+把决策模型放进真实循环里的开源产品与 demo。目前大多使用 Jev。
 
 - [MemSearch](https://github.com/zilliztech/memsearch) - 面向编程 Agent 的 Markdown 记忆系统，提供可选的 Jev Noul 重排器与公开的中英文检索评测；属于社区集成，并非 TypeSafe 官方 SDK
 - [Jev RAG](https://github.com/aifabrice/jev-rag) - 非官方本地优先知识检索应用：使用 SQLite BM25 或 Agent 规划的关键词检索召回候选，以 Jev `Noul` 判断重排证据，并公开可复现的 NFCorpus 评测；默认不需要向量数据库
@@ -174,7 +235,7 @@
 
 ## Agent 工具
 
-把 Jev 接到编程 Agent 与 MCP 客户端上的工具。
+把决策模型接到编程 Agent 与 MCP 客户端上的工具。
 
 - [TypeSafe agent skill](https://github.com/typesafe-ai/skills) - 官方技能包：原语、模式、如何组织 evaluation。Claude Code：`claude plugin marketplace add typesafe-ai/skills`，再 `claude plugin install typesafe@typesafe-ai`。其他 Agent：`npx skills add typesafe-ai/skills --skill typesafe-ai`。
 - [fast-jev-compaction](https://github.com/tamaratran/fast-jev-compaction) - Claude Code 插件 + npm 库：用 Jev 给工具调用打分并丢掉过时的，而不是把上下文摘要掉
@@ -215,29 +276,19 @@
 - [jev-auto-approve](https://github.com/BasmaAbouzied0/jev-auto-approve) - Claude Code PreToolUse hook：每条 Bash 命令向 Jev 提一个 Noul，判断是否严格只读；p ≥ 0.95 自动批准，否则回退到正常的权限确认，从不拒绝。本地黑名单和注入过滤让高风险命令不会发给 Jev；公开校准中 8 条会改变状态的命令无一被批准
 - [jev-secret-guard](https://github.com/BasmaAbouzied0/jev-secret-guard) - 阻止 Agent 写入或发送密钥的 Claude Code PreToolUse hook：已知格式的密钥在本地直接拦截，未知的高熵字符串只以脱敏形式作为 Noul 发给 Jev，检查过程本身不会泄露密钥；p ≥ 0.80 拦截，0.30 到 0.80 或 Jev 出错时交给人确认。公开校准中 6 个密钥全部拦截，6 个无害字符串无一被拦截
 
-## 研究与开源模型
+## 评测与排行榜
 
-受 Jev 接口启发的独立工作。它们不是 TypeSafe 的模型。
+先列排行榜，再列单项评测和评测工具。目前大多数评测针对的是 Jev。
 
-- [Kev](https://github.com/jaredpalmer/kev) - 非官方 Qwen3.5 决策模型（0.8B、4B、9B），可以自己训练和部署。一次前向完成 Choice、Score 和 Noul，权重和固定评测集已公开，本地服务实现 `/v1/systemone`。不是 TypeSafe 的模型
-- [Von](https://github.com/wfzyx/von) - 非官方本地非自回归 System One 模型，服务端兼容 `/v1/systemone`，带 Doom 演示：每步动作是一次前向。不是 TypeSafe 的模型
-- [Laya](https://github.com/NandhaKishorM/laya) - 非官方多语言非自回归决策模型：一次前向完成 Choice、Score 和 Noul，权重和 PyPI 包已公开，并按请求选择检查点。不是 TypeSafe 的模型
-- [NanoJev](https://github.com/TianyuCodings/NanoJev) - 非官方 0.6B 并行决策模型：输入状态和问题，一次前向给出完整分布，不解码文本。权重已公开，同一检查点可玩 ViZDoom、迷宫和贪吃蛇；作者自己的 ViZDoom Basic 划分上是 128/128，对照 Jev 为 56/128。不是 TypeSafe 的模型
-- [jevlike](https://github.com/vinnylarouge/jevlike) - 训练一个小的单次 scorer：上下文 + N 个文本选项 → 每个选项一个概率。含 Doom / 国际象棋视觉 demo，以及 Wikispeedia 下一跳例子。明确*不是* TypeSafe 架构或 RLCD 的复现。
-- [SemIf](https://github.com/TheoLeeCJ/SemIf-OpenJev) - 原名 OpenJev。非官方：用开源模型在家用 RTX 3090 和浏览器里做类型化决策，直接读选项 logits，不生成文本。不是 TypeSafe 的模型
-- [PocketJev](https://github.com/NullPo-jp/PocketJev) - iPhone 端侧视觉判断：MLX + Qwen3-VL 选项 logits。相机 + 三选一，不生成文字，约 1 秒，不存照片。
-- [jev-visual](https://github.com/hr98w/jev-visual) - Apple Silicon 上的教学向 Jev 风格视觉推理：共享多模态上下文、候选打分，含分拣厂 / Breakout / 手势 demo。不是 TypeSafe 的模型
-- [jevmlx](https://github.com/bnsd55/jevmlx) - 给任意 MLX 模型做 Jev 风格并行约束决策：一次前向得到带概率的、按 schema 合法的 JSON
-- [JEVfire](https://github.com/kikoncuo/jevfire) - CUDA LLM 上的 Jev 风格并行决策（vLLM），带浏览器马里奥 demo（本地约 71 ms/步）
-- [decider](https://github.com/Mapika/decider) - 基于 Qwen3.5-2B 的微调：一次前向就给出类型化决策和校准概率。非官方，不是 TypeSafe 的架构。
-- [RSI-Jev](https://github.com/Shanghua-Gao/RSI-Jev) - 非官方：由递归自我改进（RSI）的 AI 研究系统训练的 Jev-like 模型，公开每一次实验（包括失败的）。2B Qwen3.5，一次前向给出 Choice、Score、Noul，可读文本或最多四张图片（v4.0-VL），开放权重，提供兼容 `/v1/systemone` 的服务。不是 TypeSafe 的模型
-- [jev-style](https://github.com/lawrence3699/jev-style) - 非官方 0.8B 决策模型（Qwen3.5 微调），`pip install "jev-style[torch]"`（Apple 芯片用 `[mlx]`）即可在本地运行（PyTorch、MLX，或配合单独编译的打分程序用 llama.cpp），提供兼容 `/v1/systemone` 的服务：一次前向回答 Choice、Score、Noul，并附带 MCP 服务和 Claude Code 守门钩子。非官方，不是 TypeSafe 的模型。
-- [LitJev](https://github.com/zhengxuyu/litjev) - Jev 的复现：把任意 Qwen 模型变成快速决策模型，提供与 Jev 相同的 `/v1/systemone` schema（Choice、Score、Noul），不训练、不生成回答文本。非官方，不是 TypeSafe 的模型。
-- [PlayJev](https://github.com/OmniJev/PlayJev) - Qwen3.5-0.8B-Base 微调后从 448 px 画面玩十款浏览器小游戏：每步一次前向，概率直接从选项字母上读出，不生成任何文本。权重和十款游戏的浏览器 demo 都已公开。非官方，不是 TypeSafe 的模型。
-- [OneJev](https://github.com/OmniJev/OneJev) - OmniJev 团队的开源多模态 System One 模型，四种尺寸（0.8B 到 27B）：对截图、照片、视频或文本提出 Choice、Score、Noul，一次前向为每个选项给出校准概率。权重在 Hugging Face。非官方，不是 TypeSafe 的模型。
-- [jevos](https://github.com/feder-cr/jev) - 非官方 1B 决策模型，面向纯 CPU 笔记本：把 MiniCPM5 裁剪到 17 层并接一个单 logit 输出头，GGUF q4_k_m 量化后 619 MB，跑在 llama.cpp 上不需要 GPU，短请求约 54 ms。只支持 Jev `/v1/systemone` 协议里的 Noul（是/否）问题，Choice 和 Score 会返回 422。非官方，不是 TypeSafe 的模型。
-- [WebJev](https://github.com/lexmount/WebJev) - 非官方的浏览器 agent 决策模型，接口与 Jev 兼容：基于 Qwen3.5-35B-A3B 微调，在 Jev Ultrafast 循环中选择下一步操作和目标元素，提供兼容 `/v1/systemone` 的服务。在 125 个由确定性判据评分的真实网站任务上，同一 agent 中完成率为 38.5%，Jev 1.13 为 16.7%。公开 Apache-2.0 权重、训练数据、训练方法和演示应用。不是 TypeSafe 的模型
-- [Vev](https://github.com/Xiaooolong/vev) - 支持视觉输入的 Jev 开源实现，基于 Qwen3.5 4B / 9B 微调。截图、照片可以直接放进 state，Choice、Score、Noul 结合文本与图像作答，概率直接从标签 token 上读出，不生成文本。提供兼容 `/v1/systemone` 的服务，代码与权重开源，权重仅限非商用。非官方，不是 TypeSafe 的模型。
+### 排行榜
+
+- [Jev Decision Index](https://huggingface.co/spaces/multimodalart/jev-decision-index) - Hugging Face Space 排行榜：在同一硬件上用 50 多个 benchmark（知识、自动化、理解、创造力）对比 Jev 与数十个开源决策模型，含校准指标
+- [JevBench](https://github.com/fstandhartinger/jevbench) - MIT 协议的评测框架与排行榜：534 道英文决策题，分公开题和封存题，同时报告准确率、延迟和价格。讨论：[Show HN](https://news.ycombinator.com/item?id=49800574)。
+- [Jevals.com](https://jevals.com/) - 独立评测：托管 Jev 与六个 LLM 回答同样的 Noul、Choice、Score 问题，按人工标签打分（PubMedQA、Banking77、HelpSteer2），每次决策的日志公开
+- [LangWatch Jev benchmark](https://langwatch.ai/compare/jev-benchmark) - 在 15 个决策任务上对比 Jev 与 7 个 1B 以下开源模型，附 95% 区间、延迟和数据污染检查
+
+### 单项评测
+
 - [typesafe-ai-benchmark](https://github.com/iammrduncan/typesafe-ai-benchmark) - 同一套 System One 问题，对比 Jev 与 Cerebras 上的 Qwen 3.8 27B。视频：[Shannon](https://x.com/iamMrDuncan/status/2100467548298899918)。
 - [Jev Rerank Bench](https://github.com/anessbelbati/jev-rerank-bench) - 重排序对比：原始 provider 响应、打分代码、不确定区间、写明的局限。
 - [Jev Spam Eval](https://github.com/bitnovus/jev-spam-eval) - 探索性零样本垃圾邮件研究，对照训练过的 TF-IDF 基线，并写了事后调参的 caveat。
@@ -245,22 +296,33 @@
 - [Jev Phishing Bench](https://github.com/anisselbd/jev-phishing-bench) - 2000 封邮件：Jev 对 Claude Haiku 4.5 做点不点链接，带校准、延迟和成本。这里准确率是 Haiku 更高。
 - [jev-agent-failure-benchmark](https://github.com/TokenTrim/jev-agent-failure-benchmark) - Who&When Pro（注入的 Agent 故障）：Jev 对强 LLM，预测是谁 / 哪一步 / 哪类错误。
 - [jev-sec-bench](https://github.com/Gaurav-Gosain/jev-sec-bench) - 公开语料上的盲测：提示注入和漏洞代码检测，基于 jev-go。
-- [Jev DSPy Lab](https://github.com/jmanhype/jev-dspy-lab) - 非官方 DSPy 配套评测：录制并重放 TypeSafe 调用，测量校准、选择性风险、置信度弃权、延迟、token 和建模成本。
-- [jevcal](https://github.com/abhixhek/jevcal) - 非官方命令行工具：用你自己的标注数据按目标准确率为每个问题拟合置信度阈值，在留出集上验证，给出仍需回退到 LLM 的流量比例，并在 Jev 更新导致已锁定阈值失效时让 CI 失败
 - [ASSAY-001](https://github.com/jourdanlabs/assay-001) - 独立预注册核验：Banking77 / CLINC150 上测 Jev 校准与类型安全。结论分裂，日志全公开。文章：[donttrustme.ai](https://donttrustme.ai/assay-001.html)
 - [Jev search rerank eval](https://github.com/zhuyansen/jev-search-rerank-eval) - 9831 对标注：Jev rerank 对照 BM25 / bge-m3，并量化评委循环偏差。融合最好；Jev 单独打不过 embedding
 - [吸烟史抽取评测](https://github.com/vclic/smoking-extraction-benchmark) - 1000 条合成病历：Jev 对 OpenAI structured outputs，比准确率、成本和延迟
-- [Jevals.com](https://jevals.com/) - 独立评测：托管 Jev 与六个 LLM 回答同样的 Noul、Choice、Score 问题，按人工标签打分（PubMedQA、Banking77、HelpSteer2），每次决策的日志公开
-- [stuntd](https://github.com/bladedevoff/stuntd) - 基于开放 Laya 模型的本地代理，实现 Jev System One API；记录来自 Jev 上游的 Choice、Score 和 Noul 答案，为每个问题训练一个决策头，并以校准过的置信度阈值提供服务，低于阈值时回退到上游
 - [jev-fanout-bench](https://github.com/blowxian/jev-fanout-bench) - 用 2976 次经 OpenRouter 的请求比较一次批量提问和拆开提问：每次请求大约有 261 个固定输入 token，费用与公布的 token 单价一致，答案差异和重复请求的噪声相当
-- [TetraJev](https://github.com/FeiLiuEM/tetrajev) - 可本地部署的决策层，处理跨领域的复杂决策：两个冻结的开源权重读取器对每条样本给出四次读数（选项字母，以及逐候选项的是/否），无拟合地融合，再按一致性路由并设有校准后的放行门；已在八个决策套件和 RAG 重排上评测，包括 DecisionBench 的 35 类真实任务。全程不训练。非官方，不是 TypeSafe 的模型。
+
+### 评测工具
+
+- [Jev DSPy Lab](https://github.com/jmanhype/jev-dspy-lab) - 非官方 DSPy 配套评测：录制并重放 TypeSafe 调用，测量校准、选择性风险、置信度弃权、延迟、token 和建模成本。
+- [jevcal](https://github.com/abhixhek/jevcal) - 非官方命令行工具：用你自己的标注数据按目标准确率为每个问题拟合置信度阈值，在留出集上验证，给出仍需回退到 LLM 的流量比例，并在 Jev 更新导致已锁定阈值失效时让 CI 失败
+
+## 论文
+
+- [Typed Decision Models: An Early Evidence Audit and Evaluation Checklist](https://arxiv.org/abs/2609.32160) - 综述 Jev 发布后头几天的 28 篇论文：类型化读出相比同类标签概率读出没有显示出独立的准确率优势，最明确的收益是延迟和成本；并据此给出 14 条评测检查清单
+- [Jev in the Wild: A Data-Driven Analysis of the Jev Model's Functionality, Applications and Ecosystem](https://arxiv.org/abs/2609.30216) - 首个 Jev 应用生态综述与分析：覆盖 2,170 个公开 GitHub 项目，记录早期快速增长、应用领域与决策用途分布
+- [Evaluating and Benchmarking the System One Model Jev](https://arxiv.org/abs/2609.37647) - 在 37 个数据集上零样本评测 Jev 1.13（346,009 次请求，花费不到 10 美元），对照 Qwen3.8-27B 和 Gemma-4-E4B 的选项概率：Jev 在 27/37 个数据集上胜过 Qwen，37 个全部胜过 Gemma；Choice 概率校准良好，但二元概率相对 0.5 阈值的位置偏差较大。代码和原始响应已公开。
+- [Beyond Calibration: Do a Typed-Decision Model's Probabilities Obey the Probability Axioms?](https://arxiv.org/abs/2609.33209) - 无需标签的一致性检验：Jev 对「是 X」与「不是 X」的概率之和平均偏离 1 达 0.064，Qwen3.8-27B 首 token 读出为 0.293；Jev 三个单标签概率之和平均为 1.14
+- [Evaluating System One Models for Agent Security Decisions](https://arxiv.org/abs/2609.33401) - 在提示注入和风险筛查上，把 Jev、Laya、Decider、Nimble 与专用分类器和 LLM 评委对比：整体校准良好，也可能掩盖集中在特定攻击类别上的高置信错误
+- [JevAdvBench](https://arxiv.org/abs/2609.31142) - 第一个面向决策模型的对抗 benchmark：812 道类型化问题、9,744 个单点修改攻击。在 Jev 1.13 上，往状态里追加一句未经核实的观点就能翻转 12.1% 的决策，因此状态应被视为不可信输入。
+- [From Text Decisions to Pixels](https://arxiv.org/abs/2609.29283) - PixelJev：基于小型开源多模态模型的原生图像决策接口；64-shot 适配把 Pets 准确率从 60.13% 提升到 92.40%，但校准并不随准确率一起提升
+- [Chinese-Jev](https://arxiv.org/abs/2609.36965) - 面向中文的 encoder-only System One 模型：在 1000 万条样本上预训练，再分别针对医疗、法律、金融微调，并发布 CJ-Bench；作者报告通用领域准确率高于 Jev，速度快 20 倍
+- [Calibrated Decision Models for Autonomous Penetration-Testing Harnesses](https://arxiv.org/abs/2609.28940) - 探讨 Jev 与 Laya 在 LLM 渗透测试 Agent 中的位置：漏洞判定、严重度校正、Agent 剪枝和确认循环，并附一个探索性案例
 
 ## 文章
 
 独立实测与实验。
 
 - [Jev 搜索场景：三项实测](https://zc277584121.github.io/rag/2026/09/22/jev-search-deep-evaluation.html) - 停搜、记忆重排与多跳关系筛选的独立实测，附实现链接，并说明私有数据、样本数差异与速度动画为模拟等限制
-- [Jev in the Wild: A Data-Driven Analysis of the Jev Model's Functionality, Applications and Ecosystem](https://arxiv.org/abs/2609.30216) - 首个 Jev 应用生态综述与分析：覆盖 2,170 个公开 GitHub 项目，记录早期快速增长、应用领域与决策用途分布
 - [Mini-Vibe Check: TypeSafe's Jev Judged Everything I’ve Written in 0.7 Seconds](https://every.to/also-true-for-humans/mini-vibe-check-typesafe-s-jev-judged-everything-i-ve-written-in-0-7-seconds) - Every 的 Mike Taylor 用 Jev 扫过自己的写作语料。
 - [TypeSafeのJevを正しく驚く、それってLLMでできませんか？](https://zenn.dev/nwn/articles/824026c76116e0) - 用 Gemma 的 logit 并行复现 JSON 捷径，并在公开 Mario harness 上对比 Jev 与 LLM。
 - [Jev: one judge call, or twelve dimension scores? I measured both on three tasks](https://agentjournal.dev/blog/llm-judge-vs-feature-extraction/) - 独立实测：三个分类任务上，每行一次直接提问 vs 12–14 个 Jev 维度加本地拟合权重，附 token 成本、置信区间与误报率。
@@ -285,7 +347,7 @@
 
 ## 贡献
 
-见 [CONTRIBUTING.md](CONTRIBUTING.md)。简而言之：开一个 PR，加上项目链接和一句话简介。项目应当有用、有趣，并且真正基于 Jev（或明确受其接口启发）。
+见 [CONTRIBUTING.md](CONTRIBUTING.md)。简而言之：开一个 PR，加上项目链接和一句话简介。项目应当有用、有趣，并且基于或围绕决策模型。
 
 ## 许可证
 
