@@ -251,6 +251,7 @@
 - [JevRouter](https://github.com/BillionsBobby/JevRouter) - 非官方路由器：模型、子 agent、skill、MCP 工具和 CLI 放进同一个候选集，Jev 做一次 Choice，代码负责可用性、权限、风险和确认。10 个 Toolathlon 任务上，Jev 的位置命中率是 38–44%，DeepSeek V4.1 Flash 是 24%
 - [JevLoop](https://github.com/zjunlp/JevLoop) - 非官方 Agent 循环：每个分叉（选工具、风险、是否做完）交给 Jev 1.13.0，写字仍留给 LLM；没有 key 时退到本地 Laya，再退到规则。`npm run demo` 可以离线跑
 - [Jevbridge](https://github.com/gamesonrblx/Jevbridge) - 非官方 ACP/MCP 适配器：把 Jev 的类型化判断和 computer use 接到 Codex、Claude、Grok、OpenCode 旁边
+- [Conscio](https://github.com/neguiolidas/conscio) - 本地优先的智能体记忆框架，Jev 在其中担任决策委员会的类型化决策成员：它通过 choice/score/boolean 类型问题评估决策状态，并用校准后的概率为委员会的最终裁决加权.
 - [eve](https://github.com/vercel/eve) - Vercel 的 Agent 框架。实验性 `autoModel` 默认用 Gateway 上的 `typesafe-ai/jev`，从白名单里挑语言模型。
 - [jev-mcp](https://github.com/jkudish/jev-mcp) - Node MCP，封装三条 cookbook：`jev_verify`（引文核验）、`jev_screen`（注入/护栏）、`jev_find`（无需 embedding 的语义排序）。`npx -y github:jkudish/jev-mcp`。
 - [Jev MCP（Python）](https://github.com/blakestone-x/jev-mcp) - Python MCP：classify、score、check、match、screen。
