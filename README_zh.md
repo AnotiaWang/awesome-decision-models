@@ -240,6 +240,7 @@
 - [jev-asks-until-sure](https://github.com/mintannn/jev-asks-until-sure) - 用置信度决定还要问几题的二十问游戏：Jev 会断言、含糊其辞，或者干脆拒绝作答，界面同步播报每一次判定。在线：[jev.mintan.org](https://jev.mintan.org)。
 - [Jev × 2048](https://jev-2048-ultra.vercel.app) - 一个把 Jev 当作 2048 决策引擎的网页实验台，展示每一步的概率分布、置信度、延迟与 token 消耗，观察上下文设计如何影响决策模型。
 - [Book Aurora](https://github.com/dani1005/book-aurora) - 让 Jev 几十秒读完一整本小说：每段文字一次调用返回九种情绪打分和强度，每段变成一行羽化的色带，整本书就是一幅极光。《弗兰肯斯坦》601 段、6010 次类型化判断，约 25 秒、3 美分，可导出海报。
+- [FlightBench](https://github.com/AlperKartkaya/FlightBench) - 固定翼飞机着陆模拟器与基准测试，可与 Jev 比拼飞机着陆，将 Jev 的四个 `Choice` 决策映射为 JSBSim 中的飞机控制输入，并与人类飞行员、基线及 LLM 控制器的着陆表现进行对比
 
 ## Agent 工具
 

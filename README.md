@@ -240,6 +240,7 @@ Toys, live sites, and realtime agents.
 - [jev-asks-until-sure](https://github.com/mintannn/jev-asks-until-sure) - Twenty questions where confidence sets the stopping rule: Jev commits, hedges, or refuses to guess, and the UI narrates every judgment. Live: [jev.mintan.org](https://jev.mintan.org).
 - [Jev × 2048](https://jev-2048-ultra.vercel.app) - A web lab where Jev is the 2048 decision engine, showing each move's probability distribution, confidence, latency, and token cost so you can watch how context design shapes the decision model.
 - [Book Aurora](https://github.com/dani1005/book-aurora) - Jev reads a whole novel in seconds: each passage gets nine emotion scores plus intensity in one call, and every passage becomes a feathered row of colour. Frankenstein is 601 passages, 6,010 typed decisions, about 25 s and 3 cents; exports a poster.
+- [FlightBench](https://github.com/AlperKartkaya/FlightBench) - A fixed-wing landing simulator and benchmark where you can compete with Jev in landing a plane, mapping four Jev `Choice` decisions to aircraft controls and benchmarking landings against human-pilot, baseline, and LLM controllers.
 
 ## Agent Tools
 
