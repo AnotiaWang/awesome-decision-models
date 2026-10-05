@@ -94,6 +94,7 @@ Ways to get decision-model behavior from existing models, usually by reading opt
 
 Servers, gateways, and native runtimes for running decision models.
 
+- [Bud Decision Studio](https://github.com/BudEcosystem/Bud-Decision-Engine) - Open source Cross-platform desktop runtime and playground for running, evaluating, managing, and training Jev-like decision models locally, with a `/v1/systemone` API. Supports 10+ decision models. 
 - [Ollama](https://ollama.com/blog/ollama-now-supports-jev-style-decision-models) - Serves `/v1/systemone` locally since 0.35; the first decision models in its library are `nimble` and `tev1`.
 - [Ollaya](https://github.com/ollaya-dev/ollaya) - Ollama-style runtime for decision models: pulls and serves open encoders and decoders (Laya, Von, Kev, Decider, Nimble, Winnow, and more) with each author's calibration, behind `/v1/systemone`; the official TypeSafe Python SDK works against it unchanged. Site: [ollaya.dev](https://ollaya.dev).
 - [Laya-MLX](https://github.com/mizorewww/laya-mlx) - Independent native MLX port of Laya for Apple Silicon: Choice, Score, and Noul without text generation or a cloud API, retaining upstream question formatting and calibration, with published port-fidelity checks and performance measurements
