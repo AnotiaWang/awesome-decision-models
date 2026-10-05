@@ -140,6 +140,7 @@ Clients for the `/v1/systemone` API, official first. Most were written for TypeS
 ## Applications
 
 Open-source products and demos that put a decision model in a real loop. Most use Jev today.
+- [AI Group Call](https://aigroupcall.app) - Live voice call with up to eight AI agents around one goal — they debate, brainstorm and hand you a summary and action items.
 
 - [MemSearch](https://github.com/zilliztech/memsearch) - Markdown memory for coding agents with an optional Jev Noul reranker and a published English/Chinese retrieval evaluation; community integration, not an official TypeSafe SDK
 - [Jev-Mem](https://github.com/libingzheren/Jev-Mem) - Unofficial agent memory system where Jev or local Laya controls memory organization, query routing, retrieval budgets, candidate scoring, and stopping while an LLM writes answers; its [paper](https://arxiv.org/abs/2609.23986) reports LoCoMo results
