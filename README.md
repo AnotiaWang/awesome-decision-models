@@ -100,6 +100,7 @@ Servers, gateways, and native runtimes for running decision models.
 - [OpenRouter decision models](https://openrouter.ai/models?output_modalities=decisions) - Decision models from several publishers behind OpenRouter's alpha Decisions API, which chat-completions SDKs cannot call. Usage guide as an agent skill: [openrouter-decisions](https://openrouter.ai/skills/openrouter-decisions).
 - [Vercel AI Gateway](https://vercel.com/ai-gateway/models/jev) - Hosts Jev as `typesafe-ai/jev`
 - [stuntd](https://github.com/bladedevoff/stuntd) - Local proxy on the open Laya model that speaks the Jev System One API, records the app's Choice, Score and Noul answers from a Jev upstream, trains a per-question head, and serves it with a calibrated confidence threshold and fallback to the upstream
+- [Bud Decision Studio](https://github.com/BudEcosystem/Bud-Decision-Studio) - Open-source, cross-platform desktop runtime and playground from Bud Ecosystem for running, evaluating, managing, and training Jev-like decision models locally, with a `/v1/systemone` API. Supports 10+ decision models.
 
 ## SDKs & Clients
 
