@@ -67,7 +67,7 @@
 - [NanoJev](https://github.com/TianyuCodings/NanoJev) - 0.6B 并行决策模型：输入状态和问题，一次前向给出完整分布，不解码文本。权重已公开，同一检查点可玩 ViZDoom、迷宫和贪吃蛇；作者自己的 ViZDoom Basic 划分上是 128/128，对照 Jev 为 56/128。
 - [jevlike](https://github.com/vinnylarouge/jevlike) - 训练一个小的单次 scorer：上下文 + N 个文本选项 → 每个选项一个概率。含 Doom / 国际象棋视觉 demo，以及 Wikispeedia 下一跳例子。明确*不是* TypeSafe 架构或 RLCD 的复现。
 - [decider](https://github.com/Mapika/decider) - 基于 Qwen3.5-2B 的微调：一次前向就给出类型化决策和校准概率
-- [RSI-Jev](https://github.com/Shanghua-Gao/RSI-Jev) - 由递归自我改进（RSI）的 AI 研究系统训练的 Jev-like 模型，公开每一次实验（包括失败的）。2B Qwen3.5，一次前向给出 Choice、Score、Noul，可读文本或最多四张图片（v4.0-VL），开放权重，提供兼容 `/v1/systemone` 的服务。
+- [RSI-Jev](https://github.com/Shanghua-Gao/RSI-Jev) - 由递归自我改进（RSI）的 AI 研究系统训练的 Jev-like 模型，公开每一次实验（包括失败的）。4B 和 27B（v6.1-VL），一次前向为 Choice、Score、Noul 的每个选项给出概率，可读文本或图片，可选 effort 档位（low、medium、high，或按问题自选深度的 auto），开放权重，提供兼容 `/v1/systemone` 的服务。
 - [jev-style](https://github.com/lawrence3699/jev-style) - 0.8B 决策模型（Qwen3.5 微调），`pip install "jev-style[torch]"`（Apple 芯片用 `[mlx]`）即可在本地运行（PyTorch、MLX，或配合单独编译的打分程序用 llama.cpp），提供兼容 `/v1/systemone` 的服务：一次前向回答 Choice、Score、Noul，并附带 MCP 服务和 Claude Code 守门钩子
 - [PlayJev](https://github.com/OmniJev/PlayJev) - Qwen3.5-0.8B-Base 微调后从 448 px 画面玩十款浏览器小游戏：每步一次前向，概率直接从选项字母上读出，不生成任何文本。权重和十款游戏的浏览器 demo 都已公开。
 - [OneJev](https://github.com/OmniJev/OneJev) - OmniJev 团队的开源多模态 System One 模型，四种尺寸（0.8B 到 27B）：对截图、照片、视频或文本提出 Choice、Score、Noul，一次前向为每个选项给出校准概率。权重在 Hugging Face。
