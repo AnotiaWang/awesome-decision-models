@@ -59,6 +59,7 @@
 - [Intern-Decision](https://github.com/InternLM/Intern-Decision) - InternLM 基于 Qwen3.5 微调、冻结视觉塔的多模态决策模型（0.8B、2B、4B）：输入 state、可选图片以及 Choice、Score、Noul 问题，输出概率。附训练代码、两套推理后端、温度校准和 96 例分布校准 benchmark；权重在 [Hugging Face](https://huggingface.co/collections/internlm/intern-decision)。
 - [Security-One 27B](https://huggingface.co/superagent-ai/security-one-27b) - Superagent 面向安全分诊的 Apache-2.0 决策模型，基于 AutoJev-27B（Qwen3.8-27B）微调：一次前向为提示注入、工具调用、代码变更和告警严重度等问题的候选项打分。发布文章：[blog](https://www.superagent.sh/blog/introducing-security-one)。
 - [Jeeves](https://github.com/PostHog/jeeves) - PostHog 的 9B Jev-like 模型（Qwen3.5-9B + LoRA + pointer head），用 CISPO 训练成先推理再决策，并配扩散草稿模型加速；在 JevBench 231 道公开题上报告 0.935，Jev 为 0.866。训练代码和数据均已公开。
+- [Phocinae-Largha-150M-v1](https://github.com/Phocinae/Phocinae-Largha-150M-v1) - Phocinae 基于 mmBERT-small 的中英双语类型化决策模型（144.3M 参数，Apache-2.0）：一次前向给出 Choice、Score、Noul 三类问题的校准概率，训练含选项顺序不变性，并以置信门把低风险决策留在本地。typed-decisions 0.906（en，specialist：本数据集 train 分割微调）/ 0.848（zh，机译用例）；p50 21.0 ms（RTX 5090，fp16），CPU 约 1.64 s/case；τ=0.6 时 55.0% 的决策本地完成（0 输出 token）。
 
 ### 社区模型
 
