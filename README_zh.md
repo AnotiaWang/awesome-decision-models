@@ -78,6 +78,7 @@
 - [JEV-27B](https://huggingface.co/autotrust/JEV-27B) - AutoTrust 以 Jev 1.13 为教师、在 Qwen3.8-27B 上蒸馏的 Apache-2.0 模型；同一个 vLLM 引擎既提供决策，也提供未改动的 Qwen 用于普通生成。作者自测六个公开决策 benchmark 平均 84.07，Jev 为 83.85。较小版本：[JEV-9B](https://huggingface.co/autotrust/JEV-9B)。
 - [Winnow](https://huggingface.co/EldanRing/Winnow-12B) - 面向类型化决策的 Apache-2.0 Gemma 4 微调（12B 和 E4B），基于 llama.cpp 的服务同时提供 `/v1/systemone` 和 `/v1/chat/completions`。
 - [JevK5](https://github.com/allebee/jevk5) - 基于 Qwen3.5 的 Apache-2.0 决策模型（2B、4B、9B），提供 `/v1/systemone` 服务，并有可在 CPU 和 GPU 上用 llama.cpp 运行的 GGUF 版本
+- [Artemis Edge decision models](https://huggingface.co/collections/turintech/artemis-edge-decision-models-6accea74eb7016a886f25fdb) - TurinTech 独立制作的 Clef、Clef-flash、pplx-decider-v1.1-27b 和 Kev（4B、9B）GGUF 版本。默认文件体积为原模型的 27% 到 30%，在 TurinTech 自测的 typed-decisions 测试集 2,000 个决策上，与 BF16 原模型给出相同答案的比例为 92.2% 到 96.8%；每个模型卡还列出留出集决策的结果，以及与公开量化版本的对比。与原模型一样采用 Apache-2.0，可直接用未修改的 llama.cpp 通过 `/v1/systemone` 提供服务；截至 2026 年 10 月 13 日，这是唯一能在未修改的 llama.cpp 上运行的 pplx-decider 公开 GGUF。
 - [reflex](https://github.com/kshetrajna12/reflex) - 基于冻结 Qwen3.5-4B 的小型决策模型：单个 `/v1/systemone` 端点，一次前向约 200 ms 作答，并在 JevBench 公开题上与 Jev 对比
 - [imajev](https://huggingface.co/mohit67890/imajev-4b) - 基于 Qwen3.5-4B 的 Apache-2.0 4B LoRA，用于针对照片的决策：把照片和你的记录核对，或比较两张照片；训练了 `unknown` 概率，应用可以停下而不是瞎猜。请求格式为 Jev 的格式外加 `images`，可用 MLX 或 PyTorch 运行。
 - [NeoHorse-Jev-4B](https://huggingface.co/TokenRhythm/NeoHorse-Jev-4B) - TokenRhythm 基于 NeoHorse-1-4B 的 Apache-2.0 4B 决策模型：输入文本或单张图片加文本，只做 prefill 推理，提供 `/v1/systemone` 服务
