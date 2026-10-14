@@ -156,6 +156,7 @@
 - [kojev（Kotlin Multiplatform）](https://github.com/ItisNoMatter/kojev) - 社区客户端，支持 JVM、Android 和 iOS。Choice 与 Score 的答案直接回到你自己的 enum；只有一种带类型的读取方式，不设默认阈值。Maven Central：`io.github.itisnomatter:kojev:0.1.0`。
 - [jev4k](https://github.com/pambrose/jev4k) - 非官方 JVM Kotlin 客户端：用 DSL 写 Choice、Score 和 Noul，答案以类型化的值读回，包括 enum。Maven Central：`com.pambrose:jev4k`
 - [hunch](https://github.com/steven-shoemaker/hunch) - 非官方 Python 库（另有 TypeScript 版本），把 Choice / Score / Noul 变成作用于列表和 DataFrame 的函数（classify、score、check、where、extract、pick、rank、verify），支持请求去重、缓存，并可把不确定的行交给 LLM 在同一组标签中复核
+- [pydecide](https://github.com/gopaljigaur/decide) - 非官方 Python 客户端（`pip install pydecide`），用同一组 Choice / Score / Noul 问题依次访问托管 Jev、OpenRouter、OpenAI Decisions API、Laya、Laya MLX 或 sentence-transformers 重排模型：某个后端报错，或 Choice / Noul 答案的置信度低于阈值时，按配置好的顺序回退到下一个后端，并在每个响应中记录最终由哪个后端作答；同时提供 `/v1/systemone` 服务端，以及与官方 Python SDK 构造函数和 `system_one` 调用保持一致的客户端类
 - [JevT++](https://github.com/wiatrM/jevtpp) - 非官方 C++20 库，提供编译期枚举模式、类型化决策与弃权机制、本地 Laya 后端及可选的 TypeSafe System One HTTP 客户端；远程测试使用模拟响应和本地 HTTP 服务，尚未验证真实服务兼容性
 
 ## 应用
