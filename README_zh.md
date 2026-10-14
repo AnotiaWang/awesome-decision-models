@@ -38,6 +38,7 @@
 - [d1](https://docs.liquid.ai/lfm/models/decision-models) - Liquid AI 的第一个决策模型，支持文本和图片，提供可用 TypeSafe SDK 调用的 `/v1/systemone` 端点，也上架了 [OpenRouter](https://openrouter.ai/liquid/d1)（目前仅文本）。发布文章：[blog](https://www.liquid.ai/blog/d1-decision-model)。未公开模型规模。
 - [OpenAI Decisions API](https://openai.com/index/devday-2026-recap) - 在 DevDay 2026 发布，2026 年 10 月起公开 beta：由 GPT-6 Luna 针对文本、JSON 或图片 state 回答 Noul、Choice 和 Score 问题，为每个选项给出概率，不生成文本。也以 GPT-6 Luna Decisions 上架 [OpenRouter](https://openrouter.ai/openai/gpt-6-luna-decisions)。
 - [Mercury Decide](https://openrouter.ai/inception/mercury-decide) - Inception 的决策模型，OpenRouter 上有免费线路；Inception 称每秒最多可做 14 次决策。
+- [Tazo](https://tazolabs.com/) - Tazo Labs 的音频原生决策模型，面向实时语音 agent：直接读取通话音频，不经过转写，为你定义的每个选项（如回应、等待、让出话轮、附和、转人工）返回一个概率。API 需申请访问。文章：[Tazo vs Jev](https://tazolabs.com/blog/tazo-vs-jev-audio-decision-model)。
 
 ## 开源模型
 

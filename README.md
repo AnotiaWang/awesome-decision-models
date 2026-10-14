@@ -38,6 +38,7 @@ API-only models, oldest first. Open-weight models that their publishers also hos
 - [d1](https://docs.liquid.ai/lfm/models/decision-models) - Liquid AI's first decision model, for text and images, served at a `/v1/systemone` endpoint that the TypeSafe SDKs can call, and on [OpenRouter](https://openrouter.ai/liquid/d1) (text only for now). Launch post: [blog](https://www.liquid.ai/blog/d1-decision-model). Model size not disclosed.
 - [OpenAI Decisions API](https://openai.com/index/devday-2026-recap) - Announced at DevDay 2026 and in public beta since October 2026: GPT-6 Luna answers Noul, Choice, and Score questions about text, JSON, or image state with a probability for every option and no generated text. Also on [OpenRouter](https://openrouter.ai/openai/gpt-6-luna-decisions) as GPT-6 Luna Decisions.
 - [Mercury Decide](https://openrouter.ai/inception/mercury-decide) - Inception's decision model, with a free route on OpenRouter; Inception cites up to 14 decisions per second.
+- [Tazo](https://tazolabs.com/) - Tazo Labs' audio-native decision model for live voice agents: it reads the call audio with no transcript step and returns a probability for each option you define, such as respond, wait, yield, backchannel, or escalate. API access by request. Write-up: [Tazo vs Jev](https://tazolabs.com/blog/tazo-vs-jev-audio-decision-model).
 
 ## Open Models
 
