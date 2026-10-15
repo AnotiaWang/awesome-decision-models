@@ -61,6 +61,7 @@
 - [Security-One 27B](https://huggingface.co/superagent-ai/security-one-27b) - Superagent 面向安全分诊的 Apache-2.0 决策模型，基于 AutoJev-27B（Qwen3.8-27B）微调：一次前向为提示注入、工具调用、代码变更和告警严重度等问题的候选项打分。发布文章：[blog](https://www.superagent.sh/blog/introducing-security-one)。
 - [Jeeves](https://github.com/PostHog/jeeves) - PostHog 的 9B Jev-like 模型（Qwen3.5-9B + LoRA + pointer head），用 CISPO 训练成先推理再决策，并配扩散草稿模型加速；在 JevBench 231 道公开题上报告 0.935，Jev 为 0.866。训练代码和数据均已公开。
 - [Phocinae-Largha-150M-v1](https://github.com/Phocinae/Phocinae-Largha-150M-v1) - Phocinae 基于 mmBERT-small 的中英双语类型化决策模型（144.3M 参数，Apache-2.0）：一次前向给出 Choice、Score、Noul 三类问题的校准概率，训练含选项顺序不变性，并以置信门把低风险决策留在本地。typed-decisions 0.906（en，specialist：本数据集 train 分割微调）/ 0.848（zh，机译用例）；p50 21.0 ms（RTX 5090，fp16），CPU 约 1.64 s/case；τ=0.6 时 55.0% 的决策本地完成（0 输出 token）。
+- [VideoJev](https://github.com/MCG-NJU/VideoJev) - 开源 4B 与 35B-A3B System One 模型，对时间候选和答案选项直接打分，将视频时序定位与多选问答统一为决策任务，并在共享视频前缀上一次前向处理多个问题，无需生成文本
 
 ### 社区模型
 
