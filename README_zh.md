@@ -87,6 +87,7 @@
 - [WaterSheep](https://github.com/SamratDuttaOfficial/WaterSheep) - Apache-2.0 开源权重的文本决策模型：Noul、Choice、Score 和多标签问题都为每个选项给出校准概率，由本地 `/v1/systemone` 服务提供，TypeSafe 官方 Python SDK 无需修改即可使用
 - [Wald-4B](https://huggingface.co/org2ai/Wald-4B) - 基于 Qwen3.5-4B-Base 全量训练的 Apache-2.0 4B 解码器决策模型，可选思考模式，输出校准后的选项概率，附面向 CUDA GPU 的自托管 `/v1/systemone` 服务（[GitHub](https://github.com/org2AI/wald-4b)）
 - [Valen](https://github.com/Liuziyu77/Valen) - Apache-2.0 多模态 System One 模型（0.8B、2B、4B）：输入文本、图片和视频，输出候选项上的概率，附训练代码、训练数据和在线 demo
+- [Dwight 4B](https://huggingface.co/zime-ai/dwight-4b) - Zime AI 的 Apache-2.0 销售通话决策模型，基于 Qwen3-4B-Instruct-2507 微调：yes/no、choice 或 0-10 score 问题只输出一个选项 token，并给出每个选项的概率；另有模式输出带原文引用的 JSON 洞察。可用 vLLM 自托管，社区提供 GGUF 版本；仅支持英文 B2B 通话
 
 ## 推理方法
 

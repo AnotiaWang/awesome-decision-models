@@ -87,6 +87,7 @@ Open-weight models you can download and run. Scores are as reported by each proj
 - [WaterSheep](https://github.com/SamratDuttaOfficial/WaterSheep) - Apache-2.0 open-weight decision model for text: Noul, Choice, Score, and multi-label questions get a calibrated probability for every option, served by a local `/v1/systemone` server that TypeSafe's Python SDK works with unchanged
 - [Wald-4B](https://huggingface.co/org2ai/Wald-4B) - Apache-2.0 4B decoder trained in full from Qwen3.5-4B-Base, with optional thinking, calibrated option probabilities, and a self-hosted `/v1/systemone` server for CUDA GPUs ([GitHub](https://github.com/org2AI/wald-4b))
 - [Valen](https://github.com/Liuziyu77/Valen) - Apache-2.0 multimodal System One models (0.8B, 2B, 4B): text, images, and video in, probabilities over the supplied candidates out, with training code, training data, and an online demo
+- [Dwight 4B](https://huggingface.co/zime-ai/dwight-4b) - Zime AI's Apache-2.0 decision model for sales call transcripts, fine-tuned from Qwen3-4B-Instruct-2507: a yes/no, choice, or 0-10 score question gets a single option token with a probability for every option, plus a separate mode that writes JSON insights with verbatim quotes. Self-hosted with vLLM, with community GGUF builds; English B2B calls only
 
 ## Inference Techniques
 
