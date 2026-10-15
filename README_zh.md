@@ -33,6 +33,7 @@
   - [Jev 1.13 jaggedness](https://docs.typesafe.ai/model-jaggedness/jev-1.13) - 已知失败模式
   - 社区：[Discord](https://discord.gg/typesafe)（builder demo 在 [Show and Tell](https://discord.com/channels/1483217544214085663/1483217545040232493)）· [X @typesafeai](https://x.com/typesafeai)
 - [meraGPT Decider 1](https://meragpt.com/docs) - 托管决策模型（`state-decider-1`，别名 `sd-1`），通过 `/v1/systemone` 回答 Noul、Choice 和 Score，可用 TypeSafe SDK 调用；请求上限为 4,096 token，Choice 最多十个标签
+- [Trio-Spark](https://github.com/machinefi/trio-spark) - MachineFi 的托管决策模型，支持文本、图片和视频采样帧：通过 `/v1/systemone` 回答 Choice、Score 和 Noul，一次前向给出每个选项的概率。MachineFi 报告 v1.3 在 13 项公开数据集评测上为 90.9%，ECE 0.019（[发布文章](https://machinefi.com/blog/trio-spark-v13-decisions)）；权重未开放
 - [Solar Decide](https://openrouter.ai/upstage/solar-decide) - Upstage 基于 Solar Mini 4 的决策模型，目前为 beta，512K 上下文，请求格式与 Jev 相同。[Solar Decide Flash](https://openrouter.ai/upstage/solar-decide-flash) 是低延迟版本。
 - [Span-01](https://www.respan.ai/blog/introducing-span-1) - Respan 面向 AI trace 的行为分类模型：对你用自然语言定义的每种行为（提示注入、幻觉、Agent 死循环等）判断为出现、未出现或无法观察。Span-01 及其 Lite 版已上架 [OpenRouter](https://openrouter.ai/respan/span-01)。
 - [d1](https://docs.liquid.ai/lfm/models/decision-models) - Liquid AI 的第一个决策模型，支持文本和图片，提供可用 TypeSafe SDK 调用的 `/v1/systemone` 端点，也上架了 [OpenRouter](https://openrouter.ai/liquid/d1)（目前仅文本）。发布文章：[blog](https://www.liquid.ai/blog/d1-decision-model)。未公开模型规模。
