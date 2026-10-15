@@ -299,6 +299,7 @@
 - [jev-opus](https://github.com/WXK-AI/jev-opus) - 非官方 CLI 和 Claude Code 网关：在 Opus 5.5 上运行 Claude Code，每次收到提示词和每批工具调用之后，用 Jev 的 Choice / Score / Noul 类型化问题决定下一次调用的推理强度（effort），由代码负责上下限，并以逐条消息的 effort 声明发送，因此不会破坏提示缓存
 - [jev-belay](https://github.com/valentynkit/jev-belay) - Claude Code 的 Stop 钩子：先从对话记录里找证据，只有在文件改动且之后没有通过检查时才发起一次四问的 Jev 调用来核实"完成"，任何出错都放行。
 - [jev-commit](https://github.com/valentynkit/jev-commit) - Git 预提交钩子：用一次 Jev 调用判断提交信息是否匹配暂存的改动，并检查调试残留、未提及的改动和凭据泄露，只有检测到凭据才会阻止提交。
+- [strayguard](https://github.com/Eve2512/Strayguard) - Git 预提交钩子：对每个新添加的文件向 Jev 提一个 Choice 问题，在提交前标出临时脚本、输出转储、构建产物和仅限本地的文件
 - [jev-use](https://github.com/shitianfang/jev-use) - Claude Code、Codex 和 pi 插件：把 Agent 循环里不需要输出文本的判断批量交给 Jev，需要写字或置信度不足的步骤按类型化契约退回 LLM
 - [dsh-jev-tools](https://github.com/HorusJiang/dsh-jev-tools) - DeepSeek Harness 插件：用 Jev 精简超长工具输出、筛查抓取页面里的注入指令、挑选下一步该用的 skill，并提供 jev_ask 与 jev_gate 两个工具
 - [slop-grader](https://github.com/lukstei/slop-grader) - 基于规则的命令行与 Agent skill：按自定义规则集（custom rulesets）用 Jev 评分和行级标志检查文本的 AI 废话、语法和技术文档质量，并引导 AI Agent 自动修复违规
