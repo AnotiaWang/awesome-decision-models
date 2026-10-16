@@ -40,6 +40,8 @@
 - [OpenAI Decisions API](https://openai.com/index/devday-2026-recap) - 在 DevDay 2026 发布，2026 年 10 月起公开 beta：由 GPT-6 Luna 针对文本、JSON 或图片 state 回答 Noul、Choice 和 Score 问题，为每个选项给出概率，不生成文本。也以 GPT-6 Luna Decisions 上架 [OpenRouter](https://openrouter.ai/openai/gpt-6-luna-decisions)。
 - [Mercury Decide](https://openrouter.ai/inception/mercury-decide) - Inception 的决策模型，OpenRouter 上有免费线路；Inception 称每秒最多可做 14 次决策。
 - [Tazo](https://tazolabs.com/) - Tazo Labs 的音频原生决策模型，面向实时语音 agent：直接读取通话音频，不经过转写，为你定义的每个选项（如回应、等待、让出话轮、附和、转人工）返回一个概率。API 需申请访问。文章：[Tazo vs Jev](https://tazolabs.com/blog/tazo-vs-jev-audio-decision-model)。
+- [Microsoft-Decision-1](https://learn.microsoft.com/en-us/azure/foundry/foundry-models/how-to/use-foundry-models-microsoft-decision) - Microsoft Foundry 的文本与 JSON 决策模型：在 Foundry 部署上通过 `/providers/microsoft/v1/systemone` 回答 Noul、Choice 和 Score，可用 Microsoft Entra ID 或 API key 认证。文档说明了部署步骤，并带一个工单分类示例。
+- [djev](https://djev.dev) - Maisa 的托管决策 API，支持文本和图片（是/否、choice、score），带在线 playground；API 位于 `api.djev.dev`。通过邀请或恢复密钥访问。开源实现：[Davipar/djev-dev](https://github.com/Davipar/djev-dev)。
 
 ## 开源模型
 
@@ -63,10 +65,12 @@
 - [Jeeves](https://github.com/PostHog/jeeves) - PostHog 的 9B Jev-like 模型（Qwen3.5-9B + LoRA + pointer head），用 CISPO 训练成先推理再决策，并配扩散草稿模型加速；在 JevBench 231 道公开题上报告 0.935，Jev 为 0.866。训练代码和数据均已公开。
 - [Phocinae-Largha-150M-v1](https://github.com/Phocinae/Phocinae-Largha-150M-v1) - Phocinae 基于 mmBERT-small 的中英双语类型化决策模型（144.3M 参数，Apache-2.0）：一次前向给出 Choice、Score、Noul 三类问题的校准概率，训练含选项顺序不变性，并以置信门把低风险决策留在本地。typed-decisions 0.906（en，specialist：本数据集 train 分割微调）/ 0.848（zh，机译用例）；p50 21.0 ms（RTX 5090，fp16），CPU 约 1.64 s/case；τ=0.6 时 55.0% 的决策本地完成（0 输出 token）。
 - [VideoJev](https://github.com/MCG-NJU/VideoJev) - 开源 4B 与 35B-A3B System One 模型，对时间候选和答案选项直接打分，将视频时序定位与多选问答统一为决策任务，并在共享视频前缀上一次前向处理多个问题，无需生成文本
+- [OpenThai-SystemOne](https://huggingface.co/iapp/OpenThai-SystemOne) - iApp / OpenThai 的 Apache-2.0 泰语与英语 System One 0.8B 模型：一次前向完成 Choice、Score 和 Noul，接口对应 `POST /v1/systemone`，附 pip 包和 Ollama 构建 `iapp/openthai-systemone`。独立的开源重实现，与 TypeSafe 无隶属关系。
 
 ### 社区模型
 
 - [Kev](https://github.com/jaredpalmer/kev) - Qwen3.5 决策模型（0.8B、4B、9B），可以自己训练和部署。一次前向完成 Choice、Score 和 Noul，权重和固定评测集已公开，本地服务实现 `/v1/systemone`。
+- [Lev](https://github.com/InterfazeAI/lev) - Interfaze 的开源 System One 模型：Qwen3.5-4B 加 LoRA，零输出 token，服务端兼容 `/v1/systemone`。作者在自己的评测里报告，13 个 S1Bench 子集的 macro 为 74.3，对照 Jev 为 76.1。权重：interfaze-ai/lev。独立项目，与 TypeSafe 无隶属关系。
 - [Von](https://github.com/wfzyx/von) - 本地非自回归 System One 模型，服务端兼容 `/v1/systemone`，带 Doom 演示：每步动作是一次前向
 - [NanoJev](https://github.com/TianyuCodings/NanoJev) - 0.6B 并行决策模型：输入状态和问题，一次前向给出完整分布，不解码文本。权重已公开，同一检查点可玩 ViZDoom、迷宫和贪吃蛇；作者自己的 ViZDoom Basic 划分上是 128/128，对照 Jev 为 56/128。
 - [jevlike](https://github.com/vinnylarouge/jevlike) - 训练一个小的单次 scorer：上下文 + N 个文本选项 → 每个选项一个概率。含 Doom / 国际象棋视觉 demo，以及 Wikispeedia 下一跳例子。明确*不是* TypeSafe 架构或 RLCD 的复现。
@@ -81,6 +85,7 @@
 - [JEV-27B](https://huggingface.co/autotrust/JEV-27B) - AutoTrust 以 Jev 1.13 为教师、在 Qwen3.8-27B 上蒸馏的 Apache-2.0 模型；同一个 vLLM 引擎既提供决策，也提供未改动的 Qwen 用于普通生成。作者自测六个公开决策 benchmark 平均 84.07，Jev 为 83.85。较小版本：[JEV-9B](https://huggingface.co/autotrust/JEV-9B)。
 - [Winnow](https://huggingface.co/EldanRing/Winnow-12B) - 面向类型化决策的 Apache-2.0 Gemma 4 微调（12B 和 E4B），基于 llama.cpp 的服务同时提供 `/v1/systemone` 和 `/v1/chat/completions`。
 - [JevK5](https://github.com/allebee/jevk5) - 基于 Qwen3.5 的 Apache-2.0 决策模型（2B、4B、9B），提供 `/v1/systemone` 服务，并有可在 CPU 和 GPU 上用 llama.cpp 运行的 GGUF 版本
+- [JevAlt](https://mertkayacs.github.io/jevalt/) - Mert Kaya 的开源 4B 决策模型（英语 Deem-4B、土耳其语 Karar-4B、德语 Wähler-4B），附 GGUF 构建；`jevalt serve` 提供 `/v1/systemone`。Q4_K_M 在笔记本 CPU 上约占用 3 GB 内存。独立项目。
 - [Artemis Edge decision models](https://huggingface.co/collections/turintech/artemis-edge-decision-models-6accea74eb7016a886f25fdb) - TurinTech 独立制作的 Clef、Clef-flash、pplx-decider-v1.1-27b 和 Kev（4B、9B）GGUF 版本。默认文件体积为原模型的 27% 到 30%，在 TurinTech 自测的 typed-decisions 测试集 2,000 个决策上，与 BF16 原模型给出相同答案的比例为 92.2% 到 96.8%；每个模型卡还列出留出集决策的结果，以及与公开量化版本的对比。与原模型一样采用 Apache-2.0，可直接用未修改的 llama.cpp 通过 `/v1/systemone` 提供服务；截至 2026 年 10 月 13 日，这是唯一能在未修改的 llama.cpp 上运行的 pplx-decider 公开 GGUF。
 - [reflex](https://github.com/kshetrajna12/reflex) - 基于冻结 Qwen3.5-4B 的小型决策模型：单个 `/v1/systemone` 端点，一次前向约 200 ms 作答，并在 JevBench 公开题上与 Jev 对比
 - [imajev](https://huggingface.co/mohit67890/imajev-4b) - 基于 Qwen3.5-4B 的 Apache-2.0 4B LoRA，用于针对照片的决策：把照片和你的记录核对，或比较两张照片；训练了 `unknown` 概率，应用可以停下而不是瞎猜。请求格式为 Jev 的格式外加 `images`，可用 MLX 或 PyTorch 运行。
@@ -113,6 +118,7 @@
 - [llama.cpp](https://huggingface.co/blog/ggml-org/decision-models-in-llamacpp) - `llama-server` 通过 `/v1/systemone` 提供 Laya、Kev-4B、OpenJev、Clef 等决策模型，支持图片 state，router 模式可按需加载多个模型
 - [SGLang](https://docs.sglang.io/docs/supported-models/decision_models) - 原生 `/v1/decisions` 和 `/v1/systemone` 端点，从经过验证的对话模型的下一 token 分数读出选项概率，无需专门的 checkpoint
 - [vLLM Jev](https://github.com/mode-io/vllm-jev) - 在 Linux 和 Apple Silicon 上用 vLLM 原生部署决策模型，支持 Valen 的图片与视频问题
+- [openjev](https://github.com/razorback16/openjev) - 兼容 Jev 的开源 System One 服务端，运行在 DiffusionGemma 26B-A4B 及其他后端上：提供 `/v1/systemone` 和 OpenAI Decisions API 形态的接口，可用 Docker/vLLM 或 MLX，并通过 Codiv 提供免费托管线路。与 Hugging Face 上同名的 OpenJev 权重项目不是同一个项目。独立项目，与 TypeSafe 无隶属关系。
 - [Unsloth](https://unsloth.ai/docs/models/decision-laya) - Unsloth 桌面应用可在 macOS、Windows 和 Linux 本地通过兼容 TypeSafe 的 `/v1/systemone` API 提供 Laya 和 Clef
 - [Ollaya](https://github.com/ollaya-dev/ollaya) - 面向决策模型的 Ollama 式运行时：拉取并运行开源 encoder 与 decoder 模型（Laya、Von、Kev、Decider、Nimble、Winnow 等），沿用各作者的校准，对外提供 `/v1/systemone`；官方 TypeSafe Python SDK 无需修改即可连接。官网：[ollaya.dev](https://ollaya.dev)。
 - [Laya-MLX](https://github.com/mizorewww/laya-mlx) - 面向 Apple Silicon 的独立 Laya 原生 MLX 移植：本地完成 Choice、Score 和 Noul，无文本生成或云 API，沿用上游问题格式与校准，附公开的移植一致性检查和性能测量
