@@ -175,7 +175,7 @@
 - [MemSearch](https://github.com/zilliztech/memsearch) - 面向编程 Agent 的 Markdown 记忆系统，提供可选的 Jev Noul 重排器与公开的中英文检索评测；属于社区集成，并非 TypeSafe 官方 SDK
 - [Jev-Mem](https://github.com/libingzheren/Jev-Mem) - 非官方 Agent 记忆系统：Jev 或本地 Laya 负责记忆组织、查询路由、检索预算、候选评分与停止判断，LLM 负责生成答案；[论文](https://arxiv.org/abs/2609.23986)报告了作者在 LoCoMo 上的评测结果
 - [Jev RAG](https://github.com/aifabrice/jev-rag) - 非官方本地优先知识检索应用：使用 SQLite BM25 或 Agent 规划的关键词检索召回候选，以 Jev `Noul` 判断重排证据，并公开可复现的 NFCorpus 评测；默认不需要向量数据库
-- [Jev Deep Research](https://github.com/sunyasheng/JevDeepResearch) - 非官方实验性研究 Agent：Jev 通过 Choice 定位证据、Noul 判断证据是否存在，并行处理文档区域，再由 Pi-Serini 返回原文供 GPT 核查并继续研究
+- [JevGPT](https://github.com/sunyasheng/JevGPT) - 非官方研究 Agent，来自论文 [JevGPT: Thinking Fast and Slow in Autonomous Research](https://arxiv.org/abs/2610.18272)：GPT-5.5 负责规划研究；在 BrowseComp-Plus 问答中，Jev 用 Choice 定位答案所在行、用 Noul 判断每个文档区域是否涉及所需信息，并行处理大量文档，再由代码把原文段落交回 GPT。附 BrowseComp-Plus 与 NeuCLIRBench 复现代码；前身为 Jev Deep Research。
 - [Jev Ultrafast](https://github.com/browser-use/jev-ultrafast) - [Browser Use](https://github.com/browser-use) 的浏览器 Agent。一次请求里由 Jev 选出操作和 DOM 元素；只有 `TYPE_TEXT` 才让小模型写字。Google Flights 苏黎世 → 伦敦约 7 秒。含库、本地 inspector 与测时。
 - [Jev Social](https://github.com/socai-io/jev-social) - 浏览器实证社媒调研：Jev 选择受限的 Instagram、TikTok 与 LinkedIn 搜索/读取操作，socai 在用户 Chrome 中执行，报告仅引用捕获的帖子、评论与视频证据；非官方社区项目
 - [Jev Web Analyzer](https://github.com/replynodes/jev-web-analyzer) - 社区项目：把公开 SaaS 落地页提取为干净 Markdown，再让 Jev 提出十个有界的 `Choice` 问题，判断首次访问者能理解什么，包括最先要改的地方。
