@@ -86,7 +86,7 @@
 - [Winnow](https://huggingface.co/EldanRing/Winnow-12B) - 面向类型化决策的 Apache-2.0 Gemma 4 微调（12B 和 E4B），基于 llama.cpp 的服务同时提供 `/v1/systemone` 和 `/v1/chat/completions`。
 - [JevK5](https://github.com/allebee/jevk5) - 基于 Qwen3.5 的 Apache-2.0 决策模型（2B、4B、9B），提供 `/v1/systemone` 服务，并有可在 CPU 和 GPU 上用 llama.cpp 运行的 GGUF 版本
 - [JevAlt](https://mertkayacs.github.io/jevalt/) - Mert Kaya 的开源 4B 决策模型（英语 Deem-4B、土耳其语 Karar-4B、德语 Wähler-4B），附 GGUF 构建；`jevalt serve` 提供 `/v1/systemone`。Q4_K_M 在笔记本 CPU 上约占用 3 GB 内存。独立项目。
-- [Artemis Edge decision models](https://huggingface.co/collections/turintech/artemis-edge-decision-models-6accea74eb7016a886f25fdb) - TurinTech 独立制作的 Clef、Clef-flash、pplx-decider-v1.1-27b 和 Kev（4B、9B）GGUF 版本。默认文件体积为原模型的 27% 到 30%，在 TurinTech 自测的 typed-decisions 测试集 2,000 个决策上，与 BF16 原模型给出相同答案的比例为 92.2% 到 96.8%；每个模型卡还列出留出集决策的结果，以及与公开量化版本的对比。与原模型一样采用 Apache-2.0，可直接用未修改的 llama.cpp 通过 `/v1/systemone` 提供服务；截至 2026 年 10 月 13 日，这是唯一能在未修改的 llama.cpp 上运行的 pplx-decider 公开 GGUF。
+- [TurinTech compressed decision models](https://huggingface.co/collections/turintech/compressed-decision-models-6accea74eb7016a886f25fdb) - Clef、Perplexity Decider、Kev 和 d3 的 GGUF 转换版本，可在本地通过 llama.cpp 推理，模型卡说明了质量取舍
 - [reflex](https://github.com/kshetrajna12/reflex) - 基于冻结 Qwen3.5-4B 的小型决策模型：单个 `/v1/systemone` 端点，一次前向约 200 ms 作答，并在 JevBench 公开题上与 Jev 对比
 - [imajev](https://huggingface.co/mohit67890/imajev-4b) - 基于 Qwen3.5-4B 的 Apache-2.0 4B LoRA，用于针对照片的决策：把照片和你的记录核对，或比较两张照片；训练了 `unknown` 概率，应用可以停下而不是瞎猜。请求格式为 Jev 的格式外加 `images`，可用 MLX 或 PyTorch 运行。
 - [NeoHorse-Jev-4B](https://huggingface.co/TokenRhythm/NeoHorse-Jev-4B) - TokenRhythm 基于 NeoHorse-1-4B 的 Apache-2.0 4B 决策模型：输入文本或单张图片加文本，只做 prefill 推理，提供 `/v1/systemone` 服务
