@@ -180,6 +180,7 @@
 - [Jev Ultrafast](https://github.com/browser-use/jev-ultrafast) - [Browser Use](https://github.com/browser-use) 的浏览器 Agent。一次请求里由 Jev 选出操作和 DOM 元素；只有 `TYPE_TEXT` 才让小模型写字。Google Flights 苏黎世 → 伦敦约 7 秒。含库、本地 inspector 与测时。
 - [Jev Social](https://github.com/socai-io/jev-social) - 浏览器实证社媒调研：Jev 选择受限的 Instagram、TikTok 与 LinkedIn 搜索/读取操作，socai 在用户 Chrome 中执行，报告仅引用捕获的帖子、评论与视频证据；非官方社区项目
 - [Jev Web Analyzer](https://github.com/replynodes/jev-web-analyzer) - 社区项目：把公开 SaaS 落地页提取为干净 Markdown，再让 Jev 提出十个有界的 `Choice` 问题，判断首次访问者能理解什么，包括最先要改的地方。
+- [Jev Account Filter](https://github.com/caiweihan/jev-account-filter) - 非官方视频平台账户筛选工具：通过 OpenRouter Jev 1.14 用 `Noul` 对首页标题评分，再结合 Top-N 封面与账户资料独立进行类别 `Choice`，用于数据集构建与研究
 - [jev-align (Sutro)](https://github.com/sutro-sh/jev-align) - 非官方主动学习 CLI：用 Jev 评估 CSV、Parquet 和 JSONL 数据，让人工标注不确定样本与审计样本，并用 GEPA 提议改进后的定义
 - [JevSpan](https://github.com/lzq-0529/jev-span) - 非官方中英文零样本命名实体识别：代码按标点列出候选片段，由 Jev 的 `Choice` 问题提名、核验并确定每个实体的边界，每个实体都保留概率和完整的决策过程
 - [Jev for Chrome](https://github.com/chy4pro/jev-for-chrome) - Jev Ultrafast 的非官方 Chrome 扩展（Manifest V3）移植：Jev 一次请求同时选出操作和 DOM 元素，只有打字时才调用小文本模型，直接跑在用户自己的标签页里（OpenRouter / TypeSafe / Cloudflare 三种渠道）；附 17 个任务的 headless Chromium 测试套件和完整轨迹（仓库 docs/ 目录，同一套任务多轮 13–14/17）。
