@@ -333,6 +333,7 @@ Leaderboards first, then single-task studies and evaluation tooling. Most studie
 - [JevBench](https://github.com/fstandhartinger/jevbench) - MIT-licensed harness and leaderboard of 534 English decisions with public and sealed tiers, reporting accuracy, latency, and price together. Discussion: [Show HN](https://news.ycombinator.com/item?id=49800574).
 - [Jevals.com](https://jevals.com/) - Independent benchmark of hosted Jev and six LLMs on the same Noul, Choice and Score questions, graded against human labels (PubMedQA, Banking77, HelpSteer2), with per-decision logs as open data
 - [LangWatch Jev benchmark](https://langwatch.ai/compare/jev-benchmark) - Jev against seven open models under 1B on 15 decision tasks, with 95% intervals, latency, and contamination checks
+- [Decision Models as Guardrails](https://dm-as-guardrails.raxitlabs.com) - raxIT Labs' benchmark of 18 decision models (Jev, Kev, Laya, Clef, Strands Deciders, and the Perplexity and OpenAI Decisions APIs) and Amazon Bedrock Guardrails on the same 9,975 labelled guardrail checks, with one fixed 0.5 block threshold for every system; reports balanced accuracy with 95% intervals, cost per 1,000 checks, and per-row results
 
 ### Studies
 
