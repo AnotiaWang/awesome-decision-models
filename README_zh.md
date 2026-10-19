@@ -127,6 +127,7 @@
 - [sys1](https://github.com/alvarobartt/sys1) - 基于 candle 的 Rust 服务端，自托管 Laya 等开源决策模型，提供 System One 兼容 API、按 token 动态批处理，支持 CPU、Metal 和 CUDA
 - [OpenRouter 决策模型](https://openrouter.ai/models?output_modalities=decisions) - OpenRouter alpha 版 Decisions API 上多家发布方的决策模型；chat completions SDK 无法调用该 API。使用指南以 Agent skill 形式提供：[openrouter-decisions](https://openrouter.ai/skills/openrouter-decisions)。
 - [Vercel AI Gateway](https://vercel.com/ai-gateway/models/jev) - 以 `typesafe-ai/jev` 托管 Jev
+- [Jev Agent](https://jev-agent.com/api-access) - 非官方托管网关，提供 Jev 模型 API 及另外 12 个决策模型：`/api/v1/systemone` 与 TypeSafe 官方请求格式一致，`/api/v1/decisions` 接受 OpenAI Decisions API 请求，`/api/v1/classify` 运行 8 套公开的 Jev 规则集；另有 MCP 服务器和免密钥 playground，每月 5 个免费额度。独立网站，与 TypeSafe AI 无关联。
 - [stuntd](https://github.com/bladedevoff/stuntd) - 基于开放 Laya 模型的本地代理，实现 Jev System One API；记录来自 Jev 上游的 Choice、Score 和 Noul 答案，为每个问题训练一个决策头，并以校准过的置信度阈值提供服务，低于阈值时回退到上游
 - [Bud Decision Studio](https://github.com/BudEcosystem/Bud-Decision-Studio) - 来自 Bud Ecosystem 的开源跨平台桌面运行时与 Playground，可在本地运行、评测、管理和训练 Jev 风格决策模型，并提供 `/v1/systemone` API。支持 10+ 个决策模型。
 
