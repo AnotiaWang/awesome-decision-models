@@ -349,6 +349,8 @@
 - [吸烟史抽取评测](https://github.com/vclic/smoking-extraction-benchmark) - 1000 条合成病历：Jev 对 OpenAI structured outputs，比准确率、成本和延迟
 - [jev-fanout-bench](https://github.com/blowxian/jev-fanout-bench) - 用 2976 次经 OpenRouter 的请求比较一次批量提问和拆开提问：每次请求大约有 261 个固定输入 token，费用与公布的 token 单价一致，答案差异和重复请求的噪声相当
 
+- [minimind-jev](https://github.com/vicfei/minimind-jev) - 训练自己的迷你 Jev 做中文重排：冻结 bge-small-zh + 从零训练的 66 万参数决策头，笔记本 GPU 训练 3 分钟、零 API 成本。经 [jev-rag-zh-benchmark](https://github.com/vicfei/jev-rag-zh-benchmark) 在 T2Reranking 难负例上评测（n=100，95% 配对置信区间）：nDCG@5 0.488——该样本量下与 hosted Jev-1.13 不可分，显著高于 BM25。另附完整的蒸馏负结果记录（教师软标签输给 gold 二元标签），教师判断数据集已发布（[cnfeichen/t2reranking-4level-judgments](https://huggingface.co/datasets/cnfeichen/t2reranking-4level-judgments)）。检查点：[cnfeichen/minimind-jev-v0.1](https://huggingface.co/cnfeichen/minimind-jev-v0.1)。
+
 ### 评测工具
 
 - [System One Playground](https://github.com/goodboybeau/system-one-playground) - 本地 Apple Silicon 决策模型工作台，可并排比较 Laya、Decider、Kev、Jev 等引擎，附公开数据集上的准确率与校准评测、输入截断诊断，以及延迟、内存和负载测试
