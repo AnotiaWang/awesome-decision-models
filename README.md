@@ -388,7 +388,7 @@ Community cookbooks.
 
 ## Related
 
-- [awesome-jev-prompts](https://github.com/vicfei/awesome-jev-prompts) - 43 field-tested Jev question patterns (Choice/Score/Noul) with templates, thresholds, and failure modes, plus 10 anti-patterns. CC0, bilingual EN/中文.
+- [awesome-jev-prompts](https://github.com/vicfei/awesome-jev-prompts) - 51 field-tested Jev question patterns across 9 categories (incl. embodied & multimodal, and anti-patterns) with templates, thresholds, and failure modes; every entry sourced under a four-level verification policy. CC0, bilingual EN/中文.
 - [MrJev/awesome-jev](https://github.com/MrJev/awesome-jev) - Selective list behind a 10-star bar, with hands-on reviews at [mrjev.com](https://mrjev.com/best-jev-tools/) recording what each tool sends and where.
 - [Awesome TypeSafe Jev](https://github.com/AbdelStark/awesome-typesafe-jev) - Unofficial source-backed Jev field guide with a typed-decision walkthrough, community project cards, independent evaluation links, and a first-contribution path
 - [laya.tools](https://laya.tools) - Unofficial directory of about 950 projects built on the open Laya model, from GitHub, npm, Hugging Face and X, browsable by platform and use case, with a Laya vs Jev comparison. Not affiliated with TypeSafe or ConvAI
