@@ -67,6 +67,8 @@ Open-weight models you can download and run. Scores are as reported by each proj
 - [VideoJev](https://github.com/MCG-NJU/VideoJev) - Open 4B and 35B-A3B System One models that score temporal candidates and answer options for video grounding and multiple-choice QA, answering multiple queries over one shared video prefix without text generation
 - [OpenThai-SystemOne](https://huggingface.co/iapp/OpenThai-SystemOne) - iApp / OpenThai's Apache-2.0 Thai and English System One 0.8B model: Choice, Score, and Noul in one pass, mirroring `POST /v1/systemone`, with a pip package and an Ollama build `iapp/openthai-systemone`. Independent open re-implementation; not affiliated with TypeSafe.
 
+- [Saina Helm 2 and Omni](https://github.com/run-saina/saina) - Open-weight 0.8B decision models that score caller-defined answers in one shared forward pass: Helm 2 reads text, Omni adds images and short audio, and the server supports Jev-compatible `/v1/systemone` requests
+
 ### Community models
 
 - [Kev](https://github.com/jaredpalmer/kev) - Qwen3.5 decision models (0.8B, 4B, 9B) you can train and serve yourself. Choice, Score, and Noul in one forward pass, with published weights and frozen eval suites, and a local server that speaks `/v1/systemone`.

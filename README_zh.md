@@ -67,6 +67,8 @@
 - [VideoJev](https://github.com/MCG-NJU/VideoJev) - 开源 4B 与 35B-A3B System One 模型，对时间候选和答案选项直接打分，将视频时序定位与多选问答统一为决策任务，并在共享视频前缀上一次前向处理多个问题，无需生成文本
 - [OpenThai-SystemOne](https://huggingface.co/iapp/OpenThai-SystemOne) - iApp / OpenThai 的 Apache-2.0 泰语与英语 System One 0.8B 模型：一次前向完成 Choice、Score 和 Noul，接口对应 `POST /v1/systemone`，附 pip 包和 Ollama 构建 `iapp/openthai-systemone`。独立的开源重实现，与 TypeSafe 无隶属关系。
 
+- [Saina Helm 2 and Omni](https://github.com/run-saina/saina) - 开放权重的 0.8B 决策模型，在一次共享前向计算中为调用方定义的答案评分：Helm 2 处理文本，Omni 增加图像和短音频支持，服务端兼容 Jev 的 `/v1/systemone` 请求
+
 ### 社区模型
 
 - [Kev](https://github.com/jaredpalmer/kev) - Qwen3.5 决策模型（0.8B、4B、9B），可以自己训练和部署。一次前向完成 Choice、Score 和 Noul，权重和固定评测集已公开，本地服务实现 `/v1/systemone`。
