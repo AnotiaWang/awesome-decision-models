@@ -351,6 +351,8 @@ Leaderboards first, then single-task studies and evaluation tooling. Most studie
 - [Smoking-history extraction benchmark](https://github.com/vclic/smoking-extraction-benchmark) - 1,000 synthetic notes: Jev vs OpenAI structured outputs on accuracy, cost, and latency
 - [jev-fanout-bench](https://github.com/blowxian/jev-fanout-bench) - Compares batched and separate Jev calls in 2,976 requests through OpenRouter, reporting approximately 261 fixed input tokens per request, charges matching the published token rate, and answer differences comparable to repeat-request noise.
 
+- [minimind-jev](https://github.com/vicfei/minimind-jev) - Train-your-own tiny Jev for Chinese reranking: frozen bge-small-zh + a from-scratch 660K decision head, 3 minutes on a laptop GPU, $0 API. Evaluated via [jev-rag-zh-benchmark](https://github.com/vicfei/jev-rag-zh-benchmark) on T2Reranking hard negatives (n=100, 95% paired CIs): nDCG@5 0.488 — not separable from hosted Jev-1.13 at this n, significantly above BM25. Also documents a distillation negative result (teacher soft labels lost to gold binary labels) and releases the teacher-judgments dataset ([cnfeichen/t2reranking-4level-judgments](https://huggingface.co/datasets/cnfeichen/t2reranking-4level-judgments)). Checkpoint: [cnfeichen/minimind-jev-v0.1](https://huggingface.co/cnfeichen/minimind-jev-v0.1).
+
 ### Tooling
 
 - [System One Playground](https://github.com/goodboybeau/system-one-playground) - Local Apple Silicon workbench comparing Laya, Decider, Kev, Jev, and other engines side by side, with public-dataset benchmarks for accuracy and calibration, input-truncation diagnostics, latency, memory, and load tests
