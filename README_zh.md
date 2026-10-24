@@ -120,6 +120,7 @@
 - [llama.cpp](https://huggingface.co/blog/ggml-org/decision-models-in-llamacpp) - `llama-server` 通过 `/v1/systemone` 提供 Laya、Kev-4B、OpenJev、Clef 等决策模型，支持图片 state，router 模式可按需加载多个模型
 - [SGLang](https://docs.sglang.io/docs/supported-models/decision_models) - 原生 `/v1/decisions` 和 `/v1/systemone` 端点，从经过验证的对话模型的下一 token 分数读出选项概率，无需专门的 checkpoint
 - [vLLM Jev](https://github.com/mode-io/vllm-jev) - 在 Linux 和 Apple Silicon 上用 vLLM 原生部署决策模型，支持 Valen 的图片与视频问题
+- [Flide](https://github.com/OmniJev/Flide) - OmniJev 团队的开源决策模型推理引擎。它在一次前向中把同一个 state 分叉给全部问题，每个答案都与单独提问时一致，并通过 `/v1/systemone` 提供 OneJev、Qwen3.5 和 Gemma 4。`pip install flide`。
 - [openjev](https://github.com/razorback16/openjev) - 兼容 Jev 的开源 System One 服务端，运行在 DiffusionGemma 26B-A4B 及其他后端上：提供 `/v1/systemone` 和 OpenAI Decisions API 形态的接口，可用 Docker/vLLM 或 MLX，并通过 Codiv 提供免费托管线路。与 Hugging Face 上同名的 OpenJev 权重项目不是同一个项目。独立项目，与 TypeSafe 无隶属关系。
 - [Unsloth](https://unsloth.ai/docs/models/decision-laya) - Unsloth 桌面应用可在 macOS、Windows 和 Linux 本地通过兼容 TypeSafe 的 `/v1/systemone` API 提供 Laya 和 Clef
 - [Ollaya](https://github.com/ollaya-dev/ollaya) - 面向决策模型的 Ollama 式运行时：拉取并运行开源 encoder 与 decoder 模型（Laya、Von、Kev、Decider、Nimble、Winnow 等），沿用各作者的校准，对外提供 `/v1/systemone`；官方 TypeSafe Python SDK 无需修改即可连接。官网：[ollaya.dev](https://ollaya.dev)。
