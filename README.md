@@ -358,6 +358,8 @@ Leaderboards first, then single-task studies and evaluation tooling. Most studie
 
 - [minimind-jev](https://github.com/vicfei/minimind-jev) - Train-your-own tiny Jev for Chinese reranking: frozen bge-small-zh + a from-scratch 660K decision head, 3 minutes on a laptop GPU, $0 API. Evaluated via [jev-rag-zh-benchmark](https://github.com/vicfei/jev-rag-zh-benchmark) on T2Reranking hard negatives (n=100, 95% paired CIs): nDCG@5 0.488 — not separable from hosted Jev-1.13 at this n, significantly above BM25. Also documents a distillation negative result (teacher soft labels lost to gold binary labels) and releases the teacher-judgments dataset ([cnfeichen/t2reranking-4level-judgments](https://huggingface.co/datasets/cnfeichen/t2reranking-4level-judgments)). Checkpoint: [cnfeichen/minimind-jev-v0.1](https://huggingface.co/cnfeichen/minimind-jev-v0.1).
 
+- [ProbabilityBench](https://github.com/ishida-lab/ProbabilityBench) - Evaluates Jev, Perplexity Decider, and other models against exact instance-level class probabilities in three simulated text domains (peer review, covert information transfer, and credit risk), using KL divergence to measure probability quality; includes evaluation code and a [paper](https://arxiv.org/abs/2610.17016)
+
 ### Tooling
 
 - [JevalKit](https://github.com/Valen-Team/JevalKit) - Open-source evaluation toolkit for Jev-like decision models, with unified model interfaces, prepared text/image/video benchmarks and a [leaderboard](https://huggingface.co/spaces/Valen-Team/JevalKit-Leaderboard) distinguishing full evaluations from smoke tests and imported predictions

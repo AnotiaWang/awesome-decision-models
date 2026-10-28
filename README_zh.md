@@ -358,6 +358,8 @@
 
 - [minimind-jev](https://github.com/vicfei/minimind-jev) - 训练自己的迷你 Jev 做中文重排：冻结 bge-small-zh + 从零训练的 66 万参数决策头，笔记本 GPU 训练 3 分钟、零 API 成本。经 [jev-rag-zh-benchmark](https://github.com/vicfei/jev-rag-zh-benchmark) 在 T2Reranking 难负例上评测（n=100，95% 配对置信区间）：nDCG@5 0.488——该样本量下与 hosted Jev-1.13 不可分，显著高于 BM25。另附完整的蒸馏负结果记录（教师软标签输给 gold 二元标签），教师判断数据集已发布（[cnfeichen/t2reranking-4level-judgments](https://huggingface.co/datasets/cnfeichen/t2reranking-4level-judgments)）。检查点：[cnfeichen/minimind-jev-v0.1](https://huggingface.co/cnfeichen/minimind-jev-v0.1)。
 
+- [ProbabilityBench](https://github.com/ishida-lab/ProbabilityBench) - 在同行评审、隐蔽信息传递和信用风险三个模拟文本领域中，将 Jev、Perplexity Decider 等模型的预测概率与每个样本的精确类别概率对比，用 KL 散度衡量概率预测质量；附评测代码和[论文](https://arxiv.org/abs/2610.17016)
+
 ### 评测工具
 
 - [JevalKit](https://github.com/Valen-Team/JevalKit) - Jev 风格决策模型开源评测工具：提供统一模型接口、预处理好的文本/图片/视频评测数据及[排行榜](https://huggingface.co/spaces/Valen-Team/JevalKit-Leaderboard)，区分完整评测、冒烟测试和导入的预测结果
