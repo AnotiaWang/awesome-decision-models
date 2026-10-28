@@ -349,6 +349,8 @@
 - [吸烟史抽取评测](https://github.com/vclic/smoking-extraction-benchmark) - 1000 条合成病历：Jev 对 OpenAI structured outputs，比准确率、成本和延迟
 - [jev-fanout-bench](https://github.com/blowxian/jev-fanout-bench) - 用 2976 次经 OpenRouter 的请求比较一次批量提问和拆开提问：每次请求大约有 261 个固定输入 token，费用与公布的 token 单价一致，答案差异和重复请求的噪声相当
 
+- [awesome-ai-quant](https://github.com/vicfei/awesome-ai-quant) - AI 工程师进量化金融的阅读地图：交易 Agent、LLM 因子挖掘、市场中的决策模型、表格基础模型——每条标注 AI 视角注释。双语。
+
 ### 评测工具
 
 - [System One Playground](https://github.com/goodboybeau/system-one-playground) - 本地 Apple Silicon 决策模型工作台，可并排比较 Laya、Decider、Kev、Jev 等引擎，附公开数据集上的准确率与校准评测、输入截断诊断，以及延迟、内存和负载测试

@@ -349,6 +349,8 @@ Leaderboards first, then single-task studies and evaluation tooling. Most studie
 - [Smoking-history extraction benchmark](https://github.com/vclic/smoking-extraction-benchmark) - 1,000 synthetic notes: Jev vs OpenAI structured outputs on accuracy, cost, and latency
 - [jev-fanout-bench](https://github.com/blowxian/jev-fanout-bench) - Compares batched and separate Jev calls in 2,976 requests through OpenRouter, reporting approximately 261 fixed input tokens per request, charges matching the published token rate, and answer differences comparable to repeat-request noise.
 
+- [awesome-ai-quant](https://github.com/vicfei/awesome-ai-quant) - Curated reading map for AI engineers entering quantitative finance: trading agents, LLM factor mining, decision models in markets, tabular FMs — each annotated with why AI engineers should care. Bilingual.
+
 ### Tooling
 
 - [System One Playground](https://github.com/goodboybeau/system-one-playground) - Local Apple Silicon workbench comparing Laya, Decider, Kev, Jev, and other engines side by side, with public-dataset benchmarks for accuracy and calibration, input-truncation diagnostics, latency, memory, and load tests
