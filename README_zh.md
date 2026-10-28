@@ -339,6 +339,9 @@
 - [LangWatch Jev benchmark](https://langwatch.ai/compare/jev-benchmark) - 在 15 个决策任务上对比 Jev 与 7 个 1B 以下开源模型，附 95% 区间、延迟和数据污染检查
 - [Decision Models as Guardrails](https://dm-as-guardrails.raxitlabs.com) - raxIT Labs 的评测：18 个决策模型（Jev、Kev、Laya、Clef、Strands Deciders，以及 Perplexity 和 OpenAI Decisions API）与 Amazon Bedrock Guardrails 回答同样的 9,975 条带标签护栏检查，所有系统统一用 0.5 拦截阈值；报告平衡准确率及 95% 区间、每千次检查成本和逐条结果
 
+- [System 1 Decision Benchmark](https://github.com/etsabary/system-1-decision-benchmark) - 独立对比托管和本地决策模型及关闭推理的 LLM 参考模型，覆盖 1,342 道文本题，报告各类任务准确率、响应时间、成本和调用路径
+- [Visual Decision Benchmark](https://github.com/etsabary/visual-decision-benchmark) - 独立对比决策模型在 20 类共 200 道图像决策题上的表现，报告准确率、延迟、成本和图像来源
+
 ### 单项评测
 
 - [typesafe-ai-benchmark](https://github.com/iammrduncan/inference-benchmarks) - 同一套 System One 问题，对比 Jev 与 Cerebras 上的 Qwen 3.8 27B。视频：[Shannon](https://x.com/iamMrDuncan/status/2100467548298899918)。

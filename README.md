@@ -339,6 +339,9 @@ Leaderboards first, then single-task studies and evaluation tooling. Most studie
 - [LangWatch Jev benchmark](https://langwatch.ai/compare/jev-benchmark) - Jev against seven open models under 1B on 15 decision tasks, with 95% intervals, latency, and contamination checks
 - [Decision Models as Guardrails](https://dm-as-guardrails.raxitlabs.com) - raxIT Labs' benchmark of 18 decision models (Jev, Kev, Laya, Clef, Strands Deciders, and the Perplexity and OpenAI Decisions APIs) and Amazon Bedrock Guardrails on the same 9,975 labelled guardrail checks, with one fixed 0.5 block threshold for every system; reports balanced accuracy with 95% intervals, cost per 1,000 checks, and per-row results
 
+- [System 1 Decision Benchmark](https://github.com/etsabary/system-1-decision-benchmark) - Independent comparison of hosted and local decision models plus no-reasoning LLM references on 1,342 text questions, with per-category accuracy, response times, cost, and route details
+- [Visual Decision Benchmark](https://github.com/etsabary/visual-decision-benchmark) - Independent comparison of decision models on 200 image-grounded questions across 20 categories, with accuracy, latency, cost, and image provenance
+
 ### Studies
 
 - [typesafe-ai-benchmark](https://github.com/iammrduncan/inference-benchmarks) - Side-by-side of Jev vs Qwen 3.8 27B on Cerebras for the same System One questions. Video: [Shannon](https://x.com/iamMrDuncan/status/2100467548298899918).
