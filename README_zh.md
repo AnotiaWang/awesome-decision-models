@@ -337,7 +337,7 @@
 - [JevBench](https://github.com/fstandhartinger/jevbench) - MIT 协议的评测框架与排行榜：534 道英文决策题，分公开题和封存题，同时报告准确率、延迟和价格。讨论：[Show HN](https://news.ycombinator.com/item?id=49800574)。
 - [Jevals.com](https://jevals.com/) - 独立评测：托管 Jev 与六个 LLM 回答同样的 Noul、Choice、Score 问题，按人工标签打分（PubMedQA、Banking77、HelpSteer2），每次决策的日志公开
 - [LangWatch Jev benchmark](https://langwatch.ai/compare/jev-benchmark) - 在 15 个决策任务上对比 Jev 与 7 个 1B 以下开源模型，附 95% 区间、延迟和数据污染检查
-- [Decision Models as Guardrails](https://dm-as-guardrails.raxitlabs.com) - raxIT Labs 的评测：18 个决策模型（Jev、Kev、Laya、Clef、Strands Deciders，以及 Perplexity 和 OpenAI Decisions API）与 Amazon Bedrock Guardrails 回答同样的 9,975 条带标签护栏检查，所有系统统一用 0.5 拦截阈值；报告平衡准确率及 95% 区间、每千次检查成本和逐条结果
+- [Decision Models as Guardrails](https://dm-as-guardrails.raxitlabs.com) - raxIT Labs 的评测：29 个决策模型（Liquid d1-ultra 和 d1.1、Jev、Kev、Laya、Clef、Strands Deciders、Microsoft-Decision-1、Drex、Mercury Decide、Solar Decide、Span-02，以及 Perplexity 和 OpenAI Decisions API）与 Amazon Bedrock Guardrails 回答同样的 9,975 条带标签护栏检查，所有系统统一用 0.5 拦截阈值；报告平衡准确率及 95% 区间、每千次检查成本和逐条结果
 
 - [System 1 Decision Benchmark](https://github.com/etsabary/system-1-decision-benchmark) - 独立对比托管和本地决策模型及关闭推理的 LLM 参考模型，覆盖 1,342 道文本题，报告各类任务准确率、响应时间、成本和调用路径
 - [Visual Decision Benchmark](https://github.com/etsabary/visual-decision-benchmark) - 独立对比决策模型在 20 类共 200 道图像决策题上的表现，报告准确率、延迟、成本和图像来源
