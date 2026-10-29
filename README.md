@@ -367,6 +367,7 @@ Leaderboards first, then single-task studies and evaluation tooling. Most studie
 - [Jev DSPy Lab](https://github.com/jmanhype/jev-dspy-lab) - Unofficial DSPy companion that records and replays TypeSafe calls while measuring calibration, selective risk, confidence-gated abstention, latency, tokens, and modeled cost.
 - [jevcal](https://github.com/abhixhek/jevcal) - Unofficial CLI that fits a per-question confidence threshold to a target accuracy on your own labeled data, verifies it on a held-out split, shows how much traffic still needs an LLM fallback, and fails CI when a Jev update breaks the locked thresholds
 - [jevals](https://github.com/openlayer-ai/jevals) - Openlayer's agent evals and guardrails as decision-model questions: tool choice, grounding, relevancy, and injection checks for a trace go out in one request, to Jev or locally to Kev, Laya, or Eikos. `pip install jevals`.
+- [s1kit](https://github.com/Eliot5566/s1kit) - Unofficial Python CLI that runs one YAML suite of labelled cases against any `/v1/systemone` server (Jev, Laya, Kev, llama.cpp, Ollama) side by side, picks a per-question confidence cutoff for a target precision, and routes cheapest-first with escalation below it.
 
 ## Papers
 

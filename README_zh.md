@@ -367,6 +367,7 @@
 - [Jev DSPy Lab](https://github.com/jmanhype/jev-dspy-lab) - 非官方 DSPy 配套评测：录制并重放 TypeSafe 调用，测量校准、选择性风险、置信度弃权、延迟、token 和建模成本。
 - [jevcal](https://github.com/abhixhek/jevcal) - 非官方命令行工具：用你自己的标注数据按目标准确率为每个问题拟合置信度阈值，在留出集上验证，给出仍需回退到 LLM 的流量比例，并在 Jev 更新导致已锁定阈值失效时让 CI 失败
 - [jevals](https://github.com/openlayer-ai/jevals) - Openlayer 把 Agent 评测和护栏写成决策模型问题：一条 trace 的工具选择、依据性、相关性和注入检查在一次请求中完成，可用 Jev，也可在本地用 Kev、Laya 或 Eikos。`pip install jevals`。
+- [s1kit](https://github.com/Eliot5566/s1kit) - 非官方 Python 命令行工具：用一份 YAML 标注用例并排测试任何 `/v1/systemone` 服务（Jev、Laya、Kev、llama.cpp、Ollama），按目标精确率为每个问题选出置信度门槛，信心不足时再升级到下一个模型。
 
 ## 论文
 
