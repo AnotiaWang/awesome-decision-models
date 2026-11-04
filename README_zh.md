@@ -402,6 +402,7 @@
 ## 相关
 
 - [awesome-jev-prompts](https://github.com/vicfei/awesome-jev-prompts) - 51 个经过实践检验的 Jev 问题设计模式，分 9 大类（含具身与多模态、反模式），含模板、阈值与失败模式；每条按四级验证政策标注来源。CC0，双语 EN/中文。
+- [awesome-ai-quant](https://github.com/vicfei/awesome-ai-quant) - AI 工程师进入量化金融的阅读地图：交易 Agent、LLM 因子挖掘、市场中的决策模型与表格基础模型，每条标注为什么 AI 工程师该关心。双语 EN/中文。
 - [MrJev/awesome-jev](https://github.com/MrJev/awesome-jev) - 另一份更严的列表（10 星门槛），[mrjev.com](https://mrjev.com/best-jev-tools/) 上有动手评测，记录每个工具发了什么、发到哪。
 - [Awesome TypeSafe Jev](https://github.com/AbdelStark/awesome-typesafe-jev) - 非官方、附源码链接的 Jev 入门与项目目录，包含类型化判断示例、社区项目卡片、独立评测链接及新贡献者入口
 - [laya.tools](https://laya.tools) - 非官方目录：收录约 950 个基于开源 Laya 模型的项目，来自 GitHub、npm、Hugging Face 和 X，可按平台和用途浏览，并附 Laya 与 Jev 对比。与 TypeSafe 和 ConvAI 无隶属关系
