@@ -311,6 +311,7 @@
 - [jev-axi](https://github.com/shiftynick/jev-axi) - CLI 加 Claude Code、Codex hook：命令执行前先用 Jev 给危险性打分，并筛查抓取到的文本是否含提示注入，常规命令在本地判定、不发送任何内容
 - [jev-engineering](https://github.com/eugeniughelbur/jev-engineering) - 编程 Agent 的决策层：先走确定性规则再发一次 Jev 请求，可作为 Claude Code hook、MCP 服务、本地回环服务，并带共享团队策略。附带支撑其数字的 300 次注入测试。
 - [toolgate](https://github.com/RiskAverseTech/toolgate) - 非官方：面向 Claude Code 钩子与 MCP 服务器的工具调用防火墙，由 Jev 回答七个风险问题，确定性代码将其映射为 allow/ask/deny，默认失败即拦截，并跟踪同一会话中先写入后执行的文件
+- [OnlyRead](https://github.com/onlyreadai/onlyread) - 非官方 Chrome 扩展，让 AI 智能体在你选定的网站上只能读取：由 Jev 判断每个请求是否会修改数据并拦截会修改的请求，不确定的交给第二个模型复核
 - [Jevonian](https://github.com/xinyao27/jevonian) - 本地 OpenAI / Anthropic / Responses 兼容代理：`jevonian/auto` 用一次 Jev 请求同时决定走哪个模型和用多深的思考，状态来自会话（近期消息与工具结果、连续报错次数、上下文余量、配额、候选能力、切换模型的缓存代价）；候选筛选和全部阈值由确定性代码负责，指定具体模型或显式 `jevonian/<route>` 时完全不调用 Jev，每次决策都会记录实际服务的模型、理由、真实 token 用量和估算成本。
 - [jev-opus](https://github.com/WXK-AI/jev-opus) - 非官方 CLI 和 Claude Code 网关：在 Opus 5.5 上运行 Claude Code，每次收到提示词和每批工具调用之后，用 Jev 的 Choice / Score / Noul 类型化问题决定下一次调用的推理强度（effort），由代码负责上下限，并以逐条消息的 effort 声明发送，因此不会破坏提示缓存
 - [jev-belay](https://github.com/valentynkit/jev-belay) - Claude Code 的 Stop 钩子：先从对话记录里找证据，只有在文件改动且之后没有通过检查时才发起一次四问的 Jev 调用来核实"完成"，任何出错都放行。
