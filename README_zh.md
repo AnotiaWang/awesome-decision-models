@@ -131,6 +131,7 @@
 - [OpenRouter 决策模型](https://openrouter.ai/models?output_modalities=decisions) - OpenRouter alpha 版 Decisions API 上多家发布方的决策模型；chat completions SDK 无法调用该 API。使用指南以 Agent skill 形式提供：[openrouter-decisions](https://openrouter.ai/skills/openrouter-decisions)。
 - [Vercel AI Gateway](https://vercel.com/ai-gateway/models/jev) - 以 `typesafe-ai/jev` 托管 Jev
 - [Jev Agent](https://jev-agent.com/api-access) - 非官方托管网关，提供 Jev 模型 API 及另外 12 个决策模型：`/api/v1/systemone` 与 TypeSafe 官方请求格式一致，`/api/v1/decisions` 接受 OpenAI Decisions API 请求，`/api/v1/classify` 运行 8 套公开的 Jev 规则集；另有 MCP 服务器和免密钥 playground，每月 5 个免费额度。独立网站，与 TypeSafe AI 无关联。
+- [Umpirix](https://github.com/caelum0x/umpirix) - 可自托管的 Apache-2.0 类型化决策服务端，内置自有推理引擎（CPU 专用 int8 ONNX embedding 分类器，附词法回退，启动无需 API key 或数据库），对外提供 `/v1/systemone`。与 TypeSafe 的 System One API 线级兼容：官方 `typesafe-sdk` 和 `@typesafe-ai/sdk` 只需设置 `TYPESAFE_BASE_URL` 即可无修改连接。另提供 MCP 服务器（choice/score/noul/decide）和无需服务端的 CLI 分类器。曾用名 OpenJev；独立项目，与 TypeSafe AI 无关联。
 - [stuntd](https://github.com/bladedevoff/stuntd) - 基于开放 Laya 模型的本地代理，实现 Jev System One API；记录来自 Jev 上游的 Choice、Score 和 Noul 答案，为每个问题训练一个决策头，并以校准过的置信度阈值提供服务，低于阈值时回退到上游
 - [Bud Decision Studio](https://github.com/BudEcosystem/Bud-Decision-Studio) - 来自 Bud Ecosystem 的开源跨平台桌面运行时与 Playground，可在本地运行、评测、管理和训练 Jev 风格决策模型，并提供 `/v1/systemone` API。支持 10+ 个决策模型。
 
