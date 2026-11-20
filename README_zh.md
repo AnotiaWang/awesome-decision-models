@@ -343,6 +343,7 @@
 
 - [System 1 Decision Benchmark](https://github.com/etsabary/system-1-decision-benchmark) - 独立对比托管和本地决策模型及关闭推理的 LLM 参考模型，覆盖 1,342 道文本题，报告各类任务准确率、响应时间、成本和调用路径
 - [Visual Decision Benchmark](https://github.com/etsabary/visual-decision-benchmark) - 独立对比决策模型在 20 类共 200 道图像决策题上的表现，报告准确率、延迟、成本和图像来源
+- [S1CogBench](https://github.com/dengzhe-hou/S1CogBench) - 在 24 个经典认知实验上评测 Jev 和四个开源决策模型（Laya、Intern-Decision、Nox、CLM），另有三个语言模型对照，把在任务中行动和预测留出被试的人类选择分开计分，附社区排行榜和 [arXiv 论文](https://arxiv.org/abs/2611.00911)
 
 ### 单项评测
 
