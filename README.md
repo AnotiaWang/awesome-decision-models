@@ -343,6 +343,7 @@ Leaderboards first, then single-task studies and evaluation tooling. Most studie
 
 - [System 1 Decision Benchmark](https://github.com/etsabary/system-1-decision-benchmark) - Independent comparison of hosted and local decision models plus no-reasoning LLM references on 1,342 text questions, with per-category accuracy, response times, cost, and route details
 - [Visual Decision Benchmark](https://github.com/etsabary/visual-decision-benchmark) - Independent comparison of decision models on 200 image-grounded questions across 20 categories, with accuracy, latency, cost, and image provenance
+- [S1CogBench](https://github.com/dengzhe-hou/S1CogBench) - Benchmark of Jev and four open decision models (Laya, Intern-Decision, Nox, CLM), with three language-model controls, on 24 established cognitive experiments, scoring acting in the task separately from predicting held-out human choices, with a community leaderboard and an [arXiv paper](https://arxiv.org/abs/2611.00911)
 
 ### Studies
 
