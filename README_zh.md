@@ -401,7 +401,7 @@
 社区实践教程。
 
 - [Milvus Search with Jev](https://github.com/milvus-io/bootcamp/tree/master/bootcamp/RAG/search_with_jev) - 9 篇可运行的社区 Notebook，结合 Gemini 嵌入、Milvus 检索与 Jev 判断，覆盖重排、过滤、停搜、路由、缓存复用、数据筛选、护栏和评估
-- [Asking a model for a judgment in Kafka Streams: triaging new CVEs](https://www.alginte.com/blog/asking-a-model-for-a-judgment-in-kafka-streams/) - 在 Kafka Streams 拓扑中用 Jev 的 `Choice` 为未附带严重等级的新 CVE 判定严重等级，置信度低于 0.6 时转人工复核；文中记录了真实调用：10 个描述模糊的 CVE 中有 8 个低于该阈值。
+- [Asking a model for a judgment in Kafka Streams: triaging new CVEs](https://www.alginte.com/blog/asking-a-model-for-a-judgment-in-kafka-streams/) - 在 Kafka Streams 拓扑中用 Jev 的 `Choice` 为未附带严重等级的新 CVE 判定严重等级，置信度低于 0.6 时转人工复核；文中记录了真实调用：10 个描述模糊的 CVE 中有 8 个低于该阈值。由 Alginte 团队撰写，介绍其 Kafka 控制台中的实践。
 
 ## 相关
 

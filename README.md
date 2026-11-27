@@ -401,7 +401,7 @@ Independent measurements and experiments.
 Community cookbooks.
 
 - [Milvus Search with Jev](https://github.com/milvus-io/bootcamp/tree/master/bootcamp/RAG/search_with_jev) - Nine runnable Python notebooks combining Gemini embeddings, Milvus retrieval, and Jev decisions for reranking, filtering, search stopping, routing, cache reuse, curation, guardrails, and evaluation
-- [Asking a model for a judgment in Kafka Streams: triaging new CVEs](https://www.alginte.com/blog/asking-a-model-for-a-judgment-in-kafka-streams/) - Uses Jev's `Choice` to judge the severity of new CVEs published without one, inside a Kafka Streams topology, with a 0.6 confidence threshold for human review; reports real calls, where eight of ten vaguely described CVEs fell below it.
+- [Asking a model for a judgment in Kafka Streams: triaging new CVEs](https://www.alginte.com/blog/asking-a-model-for-a-judgment-in-kafka-streams/) - Uses Jev's `Choice` to judge the severity of new CVEs published without one, inside a Kafka Streams topology, with a 0.6 confidence threshold for human review; reports real calls, where eight of ten vaguely described CVEs fell below it. Written by the Alginte team about their Kafka console.
 
 ## Related
 
